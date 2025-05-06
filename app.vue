@@ -1,8 +1,24 @@
 <template>
   <div>
-    <NuxtRouteAnnouncer />
+    <NuxtLayout>
+      <NuxtPage
+        :transition="{
+          name: 'page',
+          mode: 'out-in',
+          onBeforeEnter,
+        }"
+      />
+    </NuxtLayout>
   </div>
 </template>
+
+<script setup lang="ts">
+const { finalizePendingLocaleChange } = useI18n();
+
+const onBeforeEnter = async () => {
+  await finalizePendingLocaleChange();
+};
+</script>
 <style lang="scss">
 .page-enter-active,
 .page-leave-active {

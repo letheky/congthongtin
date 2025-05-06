@@ -1,0 +1,132 @@
+{
+  "homeMenu": [{
+      "id": 1,
+      "label": "Giới thiệu",
+      "href": "#"
+
+    },
+    {
+      "id": 2,
+      "label": "Điểm đến",
+      "href": "#",
+
+      "children": [{
+          "id": 21,
+          "label": "Văn hóa - lịch sử",
+          "href": "#"
+        },
+        {
+          "id": 22,
+          "label": "Địa điểm check-in",
+          "href": "#"
+        },
+        {
+          "id": 23,
+          "label": "Tâm linh",
+          "href": "#"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "label": "Tin tức & sự kiện",
+      "href": "#",
+
+      "children": [{
+          "id": 31,
+          "label": "Tin tức",
+          "href": "#"
+        },
+        {
+          "id": 32,
+          "label": "Sự kiện",
+          "href": "#"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "label": "Lễ hội",
+      "href": "#"
+    },
+    {
+      "id": 5,
+      "label": "Ẩm thực",
+      "href": "#",
+
+      "children": [{
+          "id": 51,
+          "label": "Nhà hàng",
+          "href": "#"
+        },
+        {
+          "id": 52,
+          "label": "Quán cafe",
+          "href": "#"
+        },
+        {
+          "id": 53,
+          "label": "Đặc sản",
+          "href": "#"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "label": "Lưu trú",
+      "href": "#",
+
+      "children": [{
+          "id": 61,
+          "label": "Khách sạn",
+          "href": "#"
+        },
+        {
+          "id": 62,
+          "label": "Homestay",
+          "href": "#"
+        },
+        {
+          "id": 63,
+          "label": "Apartment",
+          "href": "#"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "label": "Tour du lịch",
+      "href": "#",
+
+      "children": [{
+          "id": 71,
+          "label": "Tour du lịch",
+          "href": "#"
+        },
+        {
+          "id": 72,
+          "label": "Đơn vị lữ hành",
+          "href": "#"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "label": "Thư viện media",
+      "href": "#",
+
+      "children": [{
+          "id": 81,
+          "label": "Thư viện ảnh",
+          "href": "#"
+        },
+        {
+          "id": 82,
+          "label": "Thư viện video",
+          "href": "#"
+        }
+      ]
+    }
+  ]
+
+}

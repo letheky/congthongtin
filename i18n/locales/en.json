@@ -1,0 +1,132 @@
+{
+  "homeMenu": [{
+      "id": 1,
+      "label": "Introduction",
+      "href": "#"
+
+    },
+    {
+      "id": 2,
+      "label": "Destination",
+      "href": "#",
+
+      "children": [{
+          "id": 21,
+          "label": "Culture & History",
+          "href": "#"
+        },
+        {
+          "id": 22,
+          "label": "Check-in Point",
+          "href": "#"
+        },
+        {
+          "id": 23,
+          "label": "Spiritual",
+          "href": "#"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "label": "News & Events",
+      "href": "#",
+
+      "children": [{
+          "id": 31,
+          "label": "News",
+          "href": "#"
+        },
+        {
+          "id": 32,
+          "label": "Events",
+          "href": "#"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "label": "Festival",
+      "href": "#"
+    },
+    {
+      "id": 5,
+      "label": "Cusine",
+      "href": "#",
+
+      "children": [{
+          "id": 51,
+          "label": "Restaurant",
+          "href": "#"
+        },
+        {
+          "id": 52,
+          "label": "Cafe",
+          "href": "#"
+        },
+        {
+          "id": 53,
+          "label": "Specialty",
+          "href": "#"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "label": "Accommodation",
+      "href": "#",
+
+      "children": [{
+          "id": 61,
+          "label": "Hotel",
+          "href": "#"
+        },
+        {
+          "id": 62,
+          "label": "Homestay",
+          "href": "#"
+        },
+        {
+          "id": 63,
+          "label": "Apartment",
+          "href": "#"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "label": "Tour",  
+      "href": "#",
+
+      "children": [{
+          "id": 71,
+          "label": "Tour",
+          "href": "#"
+        },
+        {
+          "id": 72,
+          "label": "Travel Agency",
+          "href": "#"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "label": "Media Library",
+      "href": "#",
+
+      "children": [{
+          "id": 81,
+          "label": "Image Library",
+          "href": "#"
+        },
+        {
+          "id": 82,
+          "label": "Video Library",
+          "href": "#"
+        }
+      ]
+    }
+  ]
+
+}

@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: false }, // disable devtools
+  // app meta tags
   app: {
     head: {
       title: "Cổng thông tin du lịch Bắc Ninh",
@@ -42,7 +43,7 @@ export default defineNuxtConfig({
       },
       {
         property: "og:image",
-        content: "/logo.webp",
+        content: "https://bacninh.vietnaminfo.net/DataFiles/2025/03/Files/20250320-115405-rG5jiF4g.png",
       },
       {
         property: "og:sitename",
@@ -59,18 +60,27 @@ export default defineNuxtConfig({
         innerHTML: `
             {
               "@context": "http://schema.org",
-              "@type": "Organization",
-              "name": "HAJ",
-              "url": "https://haj-fe.vercel.app",
+              "@type": "WebSite",
+              "name": "Cổng thông tin du lịch Bắc Ninh",
+              "url": "https://bacninh.vietnaminfo.net",
             }
           `,
       },],
     },
-    pageTransition: {
-      name: "page",
-      mode: "out-in"
-    },
   },
+  // route rules
+  routeRules: {
+    // Generated at build time for SEO purpose
+    '/': { prerender: true },
+    // Cached for 1 hour
+    '/api/*': { cache: { maxAge: 60 * 60 } },
+    // Redirection to avoid 404
+    '/old-page': {
+      redirect: { to: '/', statusCode: 302 }
+    }
+  },
+
+  // modules
   modules: [
     '@nuxt/eslint',
     '@nuxt/fonts',
@@ -80,5 +90,13 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/i18n',
     'nuxt-swiper'
-  ]
+  ],
+  //nuxt i18n
+  i18n: {
+    defaultLocale: 'vi',
+    locales: [
+      { code: 'vi', name: 'Tiếng Việt', file: 'vi.json' },
+      { code: 'en', name: 'English', file: 'en.json' }
+    ],
+  },
 })
