@@ -1,0 +1,48 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-center-vertical {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+@mixin btn-primary{
+  width: 20rem;
+  &:hover{
+    cursor: pointer;
+    opacity: 0.9;
+  }
+}
+@mixin btn-secondary{
+  width: 16rem;
+  &:hover{
+    cursor: pointer;
+    opacity: 0.9;
+  }
+}
+@mixin btn-teriary{
+  width: 14rem;
+  &:hover{
+    cursor: pointer;
+    opacity: 0.9;
+  }
+}
+
+@mixin lockdown-drag{
+  user-select: none;
+  -webkit-user-drag: none;
+  touch-action: pan-x;
+}
+
+@mixin text-shadow{
+  text-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.5);
+}
+
+@mixin text-shadow-white{
+  text-shadow: 0 0.1rem 0.4rem rgba(255, 255, 255, 0.5);
+}
