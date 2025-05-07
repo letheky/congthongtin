@@ -32,39 +32,39 @@
 
 const places = [
   {
-    image: "/image/home/colorful-1.webp",
+    image: "/images/home/colorful-1.webp",
     url: "/van-mieu-bac-ninh",
     user: {
       name: "Administrator",
-      avatar: "/image/home/admin-avatar.jpg",
+      avatar: "/images/home/admin-avatar.jpg",
       comment: "Mời anh về Bắc Ninh em chơi thăm",
     },
   },
   {
-    image: "/image/home/colorful-2.webp",
+    image: "/images/home/colorful-2.webp",
     url: "/chua-phu-luu",
     user: {
       name: "Administrator",
-      avatar: "/image/home/admin-avatar.jpg",
+      avatar: "/images/home/admin-avatar.jpg",
       comment: "Đến Bắc Ninh, đừng quên thưởng thức ẩm thực nơi này",
     },
   },
   {
-    image: "/image/home/colorful-3.webp",
+    image: "/images/home/colorful-3.webp",
     url: "/den-tho-tien-si",
     user: {
       name: "Administrator",
-      avatar: "/image/home/admin-avatar.jpg",
+      avatar: "/images/home/admin-avatar.jpg",
       comment:
         "Mời anh về Bắc Ninh em chơi thăm, lễ hội nô nức đông vui quanh năm...",
     },
   },
   {
-    image: "/image/home/colorful-4.webp",
+    image: "/images/home/colorful-4.webp",
     url: "/dinh-phu-luu",
     user: {
       name: "Administrator",
-      avatar: "/image/home/admin-avatar.jpg",
+      avatar: "/images/home/admin-avatar.jpg",
       comment: "Mời anh về với hội Lim",
     },
   },

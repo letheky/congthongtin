@@ -1,5 +1,5 @@
 <template>
-  <section class="relative h-[80vh]">
+  <section class="w-full relative h-[80vh]">
     <ClientOnly>
       <swiper-container
         ref="containerRef"
@@ -24,18 +24,18 @@
     </ClientOnly>
     <!-- Navigation -->
     <div
-      class="swiper-button-prev absolute top-1/2 -translate-y-1/2 left-10 w-10 h-10 z-10 bg-gray-400 rounded-full hover:bg-gray-500 hidden md:block "
+      class="swiper-button-prev absolute top-1/2 -translate-y-1/2 left-10 w-10 h-10 z-10 bg-gray-400 rounded-full hover:bg-gray-500 hidden md:block"
     >
       <Icon name="chevronLeft" class="text-white w-10 h-10" />
     </div>
     <div
-      class="swiper-button-next absolute top-1/2 -translate-y-1/2 right-10 w-10 h-10 z-10 bg-gray-400 rounded-full hover:bg-gray-500 hidden md:block "
+      class="swiper-button-next absolute top-1/2 -translate-y-1/2 right-10 w-10 h-10 z-10 bg-gray-400 rounded-full hover:bg-gray-500 hidden md:block"
     >
       <Icon name="chevronRight" class="text-white w-10 h-10" />
     </div>
 
     <article
-      class="absolute top-20 left-10 md:top-40 md:left-48  min-w-fit flex flex-col justify-center gap-5 z-10"
+      class="absolute top-20 left-10 md:top-40 md:left-48 min-w-fit flex flex-col justify-center gap-5 z-10"
     >
       <h2
         class="text-white text-4xl font-semibold border-l-4 border-red-600 !pl-4 tracking-tighter"
@@ -47,7 +47,7 @@
         class="text-white text-7xl font-bold tracking-tight"
         style="text-shadow: 3px 3px 2px #6f6f6f"
       >
-        {{ t("hero.location") }}
+        {{ t("location") }}
       </h1>
       <div>
         <UIPrimaryBtn>

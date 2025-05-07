@@ -94,7 +94,7 @@
     },
     {
       "id": 7,
-      "label": "Tour",  
+      "label": "Tour",
       "href": "#",
 
       "children": [{
@@ -127,9 +127,36 @@
       ]
     }
   ],
+  "location": "Bac Ninh",
   "hero": {
     "title": "Welcome to",
-    "location": "Bac Ninh",
     "description": "Explore its digital map"
+  },
+  "utilities": {
+    "title": "Utilities",
+    "gas": "Gas",
+    "taxi": "Taxi",
+    "bus": "Bus",
+    "atm": "ATM",
+    "market": "Market",
+    "shop": "Shop",
+    "pharmacy": "Pharmacy",
+    "carRental": "Car Rental",
+    "hotline": "Hotline"
+  },
+  "explore": {
+    "title": "Explore",
+    "description": "Discover the best places to visit in Bac Ninh",
+    "slogan": "Travel... Experience... And Love"
+  },
+  "events": {
+    "title": "Events"
+  },
+  "button": {
+    "viewAll": "View All"
+  },
+  "tooltip": {
+    "search": "Search",
+    "login": "Login"
   }
 }

@@ -1,46 +1,66 @@
 <template>
-  <section class="explore">
-    <h3>Khám phá Bắc Ninh</h3>
-    <p>Hãy cùng khám phá những điều ấn tượng - quan trọng tại Bắc Ninh!</p>
-    <div class="explore-grid">
+  <section class="w-full py-4 px-10">
+    <h3 class="mt-10 text-5xl text-red-600 font-bold text-center">
+      {{ t("explore.title") }} {{ t("location") }}
+    </h3>
+    <p class="text-gray-800 text-2xl text-center py-5">
+      {{ t("explore.description") }}
+    </p>
+    <div
+      class="grid grid-cols-1 grid-rows-5 gap-4 md:grid-cols-4 md:grid-rows-2"
+    >
       <div
-        v-for="(place, index) in places"
+        v-for="place in places"
         :key="place.name"
-        class="explore-item"
-        :class="{ large: index === 0 }"
+        class="relative first-of-type:col-span-1 first-of-type:row-span-1 md:first-of-type:col-span-2 md:first-of-type:row-span-2 col-span-1 row-span-1 overflow-hidden cursor-pointer rounded-md"
       >
-        <img :src="place.image" :alt="place.name" />
-        <div class="overlay">
-          <div class="view-360">
-            <img src="/images/360-icon.png" alt="360° view" class="icon-360" />
-          </div>
-          <h4>{{ place.name }}</h4>
+        <img
+          :src="place.image"
+          :alt="place.name"
+          class="w-full h-full hover:scale-110 transition-all duration-300"
+        />
+        <div class="w-full h-full absolute top-0 left-0 pointer-events-none">
+          <img
+            src="/images/360-icon.png"
+            alt="360° view"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12"
+          />
+          <h4 class="text-white text-2xl bottom-5 left-5 absolute">
+            {{ place.name }}
+          </h4>
         </div>
       </div>
     </div>
 
-    <div class="view-all">
-      <!-- <SecondaryButton text="Xem tất cả" /> -->
+    <div class="my-10 flex justify-center">
+      <UIPrimaryBtn
+        >{{ t("button.viewAll") }}
+        <Icon name="forward" class="text-white" />
+      </UIPrimaryBtn>
     </div>
 
-    <section class="explore-full">
-      <div class="explore-full-grid">
-        <div
-          v-for="(place, index) in fullPlaces"
-          :key="place.name"
-          class="explore-item"
-        >
-          <img :src="place.image" :alt="place.name" />
-          <div class="overlay">
-            <h4>{{ place.name }}</h4>
-          </div>
+    <section class="grid grid-cols-1 grid-rows-1 md:grid-cols-3 md:grid-rows-3 gap-4 h-[80vh]">
+      <div
+        v-for="place in fullPlaces"
+        :key="place.name"
+        class="relative h-full w-full overflow-hidden cursor-pointer rounded-md"
+      >
+        <img
+          :src="place.image"
+          :alt="place.name"
+          class="w-full h-full hover:scale-105 hover:brightness-75 transition-all duration-300"
+        />
+        <div class="absolute bottom-5 left-5">
+          <h4 class="text-white text-2xl">{{ place.name }}</h4>
         </div>
-        <div class="center-item">
-          <div class="center-content">
-            <h2>Bắc Ninh</h2>
-            <p class="typing-text">{{ currentText }}</p>
-          </div>
-        </div>
+      </div>
+      <div
+        class="h-full w-full bg-red-600 flex flex-col justify-center items-center gap-4 col-start-2 row-start-2"
+      >
+        <h2 class="text-white text-4xl">{{ t("location") }}</h2>
+        <p class="text-white text-2xl h-8 typing-text relative">
+          {{ currentText }}
+        </p>
       </div>
     </section>
   </section>
@@ -48,8 +68,9 @@
 
 <script setup>
 // import SecondaryButton from '@/components/UI/SecondaryButton.vue';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from "vue";
 
+const { t } = useI18n();
 const places = [
   {
     name: "Văn Miếu Bắc Ninh",
@@ -121,8 +142,9 @@ const fullPlaces = [
   },
 ];
 
-const texts = ['Đến...', 'Trải nghiệm...', 'Và yêu'];
-const currentText = ref('');
+const texts = t("explore.slogan").split("...");
+
+const currentText = ref("");
 const currentIndex = ref(0);
 const isDeleting = ref(false);
 const typingSpeed = 150;
@@ -132,7 +154,7 @@ const delayBetweenTexts = 2000;
 const typeText = () => {
   const current = currentIndex.value;
   const text = texts[current];
-  
+
   if (isDeleting.value) {
     currentText.value = text.substring(0, currentText.value.length - 1);
   } else {
@@ -144,7 +166,7 @@ const typeText = () => {
   if (!isDeleting.value && currentText.value === text) {
     typeSpeed = delayBetweenTexts;
     isDeleting.value = true;
-  } else if (isDeleting.value && currentText.value === '') {
+  } else if (isDeleting.value && currentText.value === "") {
     isDeleting.value = false;
     currentIndex.value = (currentIndex.value + 1) % texts.length;
   }
@@ -156,220 +178,24 @@ onMounted(() => {
   setTimeout(typeText, typingSpeed);
 });
 </script>
-
-<style lang="scss" scoped>
-.explore {
-  padding: 4rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-
-  h3 {
-    text-align: center;
-    margin-bottom: 1rem;
-    color: $secondary-color;
-    font-size: 2.9rem;
-    font-weight: 600;
-  }
-
-  p {
-    text-align: center;
-    color: #666;
-    margin-bottom: 2rem;
-    font-size: 1.8rem;
-  }
-
-  .explore-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 250px);
-    gap: 1rem;
-  }
-
-  .explore-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: transform 0.3s ease;
-
-    &.large {
-      grid-column: 1 / span 2;
-      grid-row: 1 / span 2;
-    }
-
-    &:hover {
-      
-
-      img {
-        transform: scale(1.2);
-      }
-
-      .overlay {
-        background: rgba(0, 0, 0, 0.4);
-      }
-    }
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    .overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.3);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 1.5rem;
-      transition: background 0.3s ease;
-
-      .view-360 {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-
-        .icon-360 {
-          width: 48px;
-          height: 48px;
-          filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-        }
-      }
-
-      h4 {
-        color: white;
-        margin: 0;
-        font-size: 1.5rem;
-        font-weight: 500;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-      }
-    }
-  }
-
-  .explore-full {
-    margin-top: 4rem;
-    max-width: 1400px;
-    margin-inline: auto;
-
-    .explore-full-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(3, 1fr);
-      gap: 1rem;
-
-      .explore-item {
-        position: relative;
-        overflow: hidden;
-
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.3s ease;
-        }
-      }
-
-      .center-item {
-        grid-column: 2;
-        grid-row: 2;
-        background-color: $secondary-color;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        .center-content {
-          text-align: center;
-          color: white;
-          min-height: 12rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-
-          h2 {
-            font-size: 3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-          }
-
-          p {
-            color: white;
-            font-size: 1.6rem;
-            margin: 0;
-            min-height: 2.4rem;
-          }
-        }
-      }
-    }
-  }
-
-  .view-all {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-  }
-
-  .typing-text {
-    min-height: 2.4rem;
-    display: inline-block;
-    position: relative;
-    padding-right: 2px;
-  }
-
-  .typing-text::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background-color: white;
-    animation: blink 0.7s infinite;
-  }
-
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
+<style scoped>
+.typing-text::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: white;
+  animation: blink 0.7s infinite;
 }
 
-@media (max-width: 1024px) {
-  .explore {
-    .explore-full-grid {
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(5, 1fr);
-
-      .center-item {
-        grid-column: 1 / span 2;
-        grid-row: 3;
-      }
-    }
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
   }
-}
-
-@media (max-width: 768px) {
-  .explore {
-    .explore-grid {
-      grid-template-columns: 1fr;
-      grid-template-rows: repeat(5, 250px);
-
-      .explore-item.large {
-        grid-column: 1;
-        grid-row: 1;
-      }
-    }
-
-    .explore-full-grid {
-      grid-template-columns: 1fr;
-      grid-template-rows: repeat(9, 250px);
-
-      .center-item {
-        grid-column: 1;
-        grid-row: 5;
-      }
-    }
+  50% {
+    opacity: 0;
   }
 }
 </style>

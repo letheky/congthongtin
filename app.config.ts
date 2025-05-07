@@ -13,10 +13,9 @@ export default defineAppConfig({
       user: "material-symbols:person",
       handbag: "ph:handbag",
       search: "material-symbols:search-rounded",
-      phone: "ic:baseline-phone",
       pin: "material-symbols:location-on-outline",
       mapicon:'material-symbols:map-outline',
-
+      
       //overlay footer for mobile
       menu: "material-symbols:lists-rounded",
       menu2: "material-symbols:menu",
@@ -35,14 +34,14 @@ export default defineAppConfig({
       landmark: "lucide:landmark",
       handbook: "hugeicons:books-01",
       gas: "material-symbols:local-gas-station",
-      taxi: "material-symbols:taxi-alert",
-      bus: "material-symbols:bus-alert",
+      taxi: "material-symbols:directions-car",
+      bus: "material-symbols:directions-bus",
       atm: "map:atm",
       market: "material-symbols:shopping-bag",
-      supermarket: "material-symbols:shopping-cart",
+      shop: "material-symbols:shopping-cart",
       pharmacy: "material-symbols:local-pharmacy",
       carRental: "material-symbols:car-rental",
-      hotline: "solar:phone-calling-linear",
+      hotline: "ic:baseline-phone",
       calendar: "material-symbols:calendar-month",
 
 

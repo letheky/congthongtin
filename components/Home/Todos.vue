@@ -14,9 +14,9 @@
       <Transition name="scale">
         <div class="todo-hover" v-if="hovered === todo.id">
           <div
-            class="todo-content"
             v-for="content in todo.content.split('.').map((c) => c.trim())"
             :key="content"
+            class="todo-content"
           >
             {{ content }}
           </div>
@@ -40,7 +40,7 @@ const todos = [
     title: "Ở đâu?",
     content: "Luôn có địa chỉ lưu trú phù hợp ở đâu đó dành riêng cho bạn",
     icon: Building2,
-    image: "/image/home/todo-1.webp",
+    image: "/images/home/todo-1.webp",
   },
   {
     id: 2,
@@ -48,21 +48,21 @@ const todos = [
     content:
       "Lựa chọn ẩm thực phong phú thỏa mãn tín đồ ẩm thực. Đa dạng trải nghiệm từ cao cấp đến đường phố",
     icon: Utensils,
-    image: "/image/home/todo-2.webp",
+    image: "/images/home/todo-2.webp",
   },
   {
     id: 3,
     title: "Chơi gì?",
     content: "Tìm kiếm sự độc độc đáo mới lạ",
     icon: Landmark,
-    image: "/image/home/todo-3.webp",
+    image: "/images/home/todo-3.webp",
   },
   {
     id: 4,
     title: "Cẩm nang du lịch",
     content: "Tận hưởng chuyến du lịch của bạn",
     icon: BookOpen,
-    image: "/image/home/todo-4.webp",
+    image: "/images/home/todo-4.webp",
   },
 ];
 </script>
@@ -97,7 +97,7 @@ const todos = [
   }
   &::before {
     content: "";
-    pointer-events: none; 
+    pointer-events: none;
     position: absolute;
     width: 92%;
     height: 92%;

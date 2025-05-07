@@ -126,9 +126,36 @@
       ]
     }
   ],
+  "location": "Bắc Ninh",
   "hero": {
     "title": "Chào mừng bạn đến với",
-    "location": "Bắc Ninh",
     "description": "Khám phá bản đồ số"
+  },
+  "utilities": {
+    "title": "Tiện ích",
+    "gas": "Xăng dầu",
+    "taxi": "Taxi",
+    "bus": "Xe bus",
+    "atm": "ATM",
+    "market": "Chợ",
+    "shop": "Siêu thị",
+    "pharmacy": "Nhà thuốc",
+    "carRental": "Thuê xe",
+    "hotline": "Hotline"
+  },
+  "explore": {
+    "title": "Khám phá",
+    "description": "Hãy cùng khám phá những điều ấn tượng - quan trọng tại Bắc Ninh",
+    "slogan": "Đến... Trải nghiệm... Và yêu"
+  },
+  "events": {
+    "title": "Sự kiện"
+  },
+  "button": {
+    "viewAll": "Xem tất cả"
+  },
+  "tooltip": {
+    "search": "Tìm kiếm",
+    "login": "Đăng nhập"
   }
 }

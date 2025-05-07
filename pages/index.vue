@@ -1,9 +1,10 @@
 <template>
   <div>
-    <HomeHero />
-    <HomeExplore />
-    <HomeEvents />
-    <HomeDetails />
+    <!-- <HomeHero /> -->
+    <!-- <HomeUltilities /> -->
+    <!-- <HomeExplore /> -->
+    <!-- <HomeEvents /> -->
+    <!-- <HomeDetails /> -->
     <!-- <HomeTodos /> -->
   </div>
 </template>
