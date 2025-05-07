@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-full max-w-full">
     <NuxtLayout>
       <NuxtPage
         :transition="{

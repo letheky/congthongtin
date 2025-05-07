@@ -3,7 +3,6 @@
       "id": 1,
       "label": "Giới thiệu",
       "href": "#"
-
     },
     {
       "id": 2,
@@ -31,7 +30,6 @@
       "id": 3,
       "label": "Tin tức & sự kiện",
       "href": "#",
-
       "children": [{
           "id": 31,
           "label": "Tin tức",

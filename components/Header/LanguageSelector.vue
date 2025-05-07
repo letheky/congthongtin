@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-end px-10 py-2 gap-2 bg-gray-800">
+  <div class="hidden items-center justify-end px-10 py-2 gap-5 bg-gray-800 md:flex">
     <button
       v-for="loc in locales"
       :key="loc.code"
@@ -41,8 +41,6 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from "#imports";
-
 const { locale, locales, setLocale } = useI18n();
 
 const currentLocale = computed(() => locale.value);

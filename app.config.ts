@@ -18,11 +18,13 @@ export default defineAppConfig({
 
       //overlay footer for mobile
       menu: "material-symbols:lists-rounded",
-      menu2: "material-symbols-light:menu",
-      chevronRight: "tabler:chevron-right",
-      chevronLeft: "tabler:chevron-left",
-      chevronDown: "tabler:chevron-down",
-      chevronUp: "tabler:chevron-up",
+      menu2: "material-symbols:menu",
+      chevronRight: "mdi:chevron-right",
+      chevronLeft: "mdi:chevron-left",
+      chevronDown: "mdi:chevron-down",
+      chevronUp: "mdi:chevron-up",
+      arrowUp: "material-symbols:arrow-drop-up",
+      arrowDown: "material-symbols:arrow-drop-down",
       back: "ic:baseline-keyboard-backspace",
       forward: "material-symbols:arrow-forward",
       close: "material-symbols:close",
@@ -40,31 +42,13 @@ export default defineAppConfig({
       pharmacy: "material-symbols:local-pharmacy",
       carRental: "material-symbols:car-rental",
       hotline: "solar:phone-calling-linear",
+      calendar: "material-symbols:calendar-month",
 
 
       //product detail
       multiImg: "fa6-regular:images",
       checked: "lets-icons:done-ring-round-fill",
-
-      //admin page
-      dashboard: "ic:outline-dashboard",
-      typography: "tabler:typography",
-      shadow: "fluent:square-shadow-20-regular",
-      register: "lucide:user-plus",
-      login: "octicon:sign-in",
-      sample: "ph:aperture",
-      avatar: "carbon:user-avatar-filled",
-      task: "fluent:task-list-20-filled",
       mail: "ic:baseline-mail-outline",
-      circle: "mdi:circle-outline",
-      currency: "mdi:currency-usd",
-      increase: "solar:arrow-left-up-outline",
-      decrease: "solar:arrow-right-down-outline",
-
-      //admin product
-      products: 'eos-icons:products-outlined',
-      edit: 'material-symbols:edit-square-outline',
-      delete: 'ic:baseline-delete-outline'
     },
     cssLayer: 'base' // set the css layer to inject to
   },

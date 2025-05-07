@@ -80,6 +80,16 @@ export default defineNuxtConfig({
     }
   },
 
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@import "@/assets/scss/style.scss";'
+        }
+      }
+    }
+  },
+
   // modules
   modules: [
     '@nuxt/eslint',
