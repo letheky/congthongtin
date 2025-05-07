@@ -15,6 +15,7 @@ export default defineAppConfig({
       search: "material-symbols:search-rounded",
       phone: "ic:baseline-phone",
       pin: "material-symbols:location-on-outline",
+      mapicon:'material-symbols:map-outline',
 
       //overlay footer for mobile
       menu: "material-symbols:lists-rounded",

@@ -126,6 +126,10 @@
         }
       ]
     }
-  ]
-
+  ],
+  "hero": {
+    "title": "Welcome to",
+    "location": "Bac Ninh",
+    "description": "Explore its digital map"
+  }
 }

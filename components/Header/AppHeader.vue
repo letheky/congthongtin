@@ -1,4 +1,5 @@
 <template>
+  <!-- Desktop header -->
   <div
     class="flex items-center justify-around px-10 py-2 gap-4 shadow-md w-full text-blue-950"
     :class="[
@@ -21,7 +22,7 @@
         <li
           v-for="(menuItem, index) in homeMenu as MenuItem[]"
           :key="menuItem.id"
-          class="relative group h-12 flex items-center"
+          class="relative group h-16 flex items-center"
         >
           <NuxtLink
             :to="t(`homeMenu[${index}].href`)"
@@ -29,21 +30,22 @@
           >
             {{ t(`homeMenu[${index}].label`) }}
           </NuxtLink>
+
+          <!-- Dropdown -->
           <ul
             v-if="menuItem.children"
-            class="opacity-0 absolute mt-2 top-full group-hover:opacity-100 transition-opacity duration-500 bg-white border-t-2 border-red-600 min-w-fit w-52 shadow-md z-10"
+            class="absolute top-full left-0 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 bg-white border-t-2 border-red-600 min-w-fit w-52 shadow-md z-10"
           >
             <li
               v-for="(child, childIndex) in menuItem.children"
               :key="child.id"
-              class="px-4 py-2 text-nowrap text-sm uppercase border-t-2 border-red-600 hover:text-white hover:bg-red-600 hover:cursor-pointer transition-colors duration-500"
+              class="px-4 py-2 text-nowrap text-sm uppercase border-t-2 border-red-600 hover:text-white hover:bg-red-600 transition-colors duration-300"
               :class="{
                 'text-gray-800': isScrolled,
               }"
             >
               <NuxtLink
                 :to="t(`homeMenu[${index}].children[${childIndex}].href`)"
-                class=""
               >
                 {{ t(`homeMenu[${index}].children[${childIndex}].label`) }}
               </NuxtLink>
@@ -53,6 +55,8 @@
       </ul>
     </nav>
   </div>
+  
+  <!-- Mobile & Touchpad header -->
   <TransitionSlideToRight>
     <div
       v-show="isOpen"
@@ -131,7 +135,7 @@
             </li>
           </ul>
         </div>
-        <div class="flex flex-col justify-between px-4 gap-4 ">
+        <div class="flex flex-col justify-between px-4 gap-4">
           <div class="flex items-center gap-2">
             <Icon name="user" class="w-5 h-5 text-gray-800" />
             <p class="text-md text-gray-800">Đăng nhập</p>
@@ -139,7 +143,7 @@
           <button
             v-for="loc in locales"
             :key="loc.code"
-            class="flex items-center gap-2 border-gray-200 first-of-type:border-t-2 first-of-type:pt-2 last-of-type:border-b-2  last-of-type:pb-2"
+            class="flex items-center gap-2 border-gray-200 first-of-type:border-t-2 first-of-type:pt-2 last-of-type:border-b-2 last-of-type:pb-2"
             :class="{
               'text-blue-800': currentLocale === loc.code,
               'text-gray-400': currentLocale !== loc.code,

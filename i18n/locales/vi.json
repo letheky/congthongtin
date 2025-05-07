@@ -125,6 +125,10 @@
         }
       ]
     }
-  ]
-
+  ],
+  "hero": {
+    "title": "Chào mừng bạn đến với",
+    "location": "Bắc Ninh",
+    "description": "Khám phá bản đồ số"
+  }
 }
