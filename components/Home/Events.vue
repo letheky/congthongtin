@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/html-self-closing -->
 <template>
   <section
-    class="w-full py-4 px-60 bg-[url('/images/home/events-bg.png')] bg-cover bg-center min-h-[60vh] relative"
+    class="w-full py-4 px-4 md:px-10 lg:px-20 bg-[url('/images/home/events-bg.png')] bg-cover bg-center min-h-[60vh] relative"
   >
     <h3 class="text-4xl font-bold text-center text-slate-700 mb-10">
       {{ t("events.title") }}
@@ -9,24 +9,29 @@
     <swiper-container
       ref="containerRef"
       :init="false"
-      class="w-full h-[40vh] shadow-lg bg-white"
+      class="w-full h-[30vh] md:h-[40vh] lg:h-[50vh] shadow-lg bg-white"
     >
       <swiper-slide v-for="event in events" :key="event.id" class="h-full">
         <div class="flex h-full justify-between">
           <div class="w-7/12 py-4 px-8">
-            <h4 class="text-2xl font-bold text-red-600 mb-2">
+            <h4
+              class="text-lg md:text-xl lg:text-2xl font-bold text-red-600 mb-2"
+            >
               {{ event.title }}
             </h4>
             <hr />
             <div
               class="event-location flex items-center gap-2 mb-2 text-gray-800 mt-2"
             >
-              <Icon name="pin" />
-              <p>Bắc Ninh</p>
+              <Icon name="pin" class="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6" />
+              <p class="text-sm md:text-base lg:text-lg">{{ t("location") }}</p>
             </div>
             <div class="text-gray-800 flex items-center gap-2 mb-2">
-              <Icon name="calendar" />
-              {{ event.date }}
+              <Icon
+                name="calendar"
+                class="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6"
+              />
+              <p class="text-sm md:text-base lg:text-lg">{{ event.date }}</p>
             </div>
           </div>
           <NuxtImg
@@ -41,17 +46,23 @@
     </swiper-container>
     <!-- Navigation -->
     <div
-      class="flex justify-between gap-2 absolute bottom-[20%] left-1/2 -translate-x-1/2 z-10"
+      class="flex justify-between gap-2 absolute bottom-[34%] md:bottom-[20%] lg:bottom-[22%] left-1/2 -translate-x-1/2 z-10"
     >
       <div
-        class="swiper-button-prev h-10 w-10 bg-gray-400 rounded-full hover:bg-gray-500"
+        class="swiper-button-prev flex justify-center items-center h-7 w-7 md:h-9 md:w-9 lg:h-11 lg:w-11 bg-gray-400 rounded-full hover:bg-gray-500"
       >
-        <Icon name="chevronLeft" class="w-10 h-10" />
+        <Icon
+          name="chevronLeft"
+          class="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"
+        />
       </div>
       <div
-        class="swiper-button-next h-10 w-10 bg-gray-400 rounded-full hover:bg-gray-500"
+        class="swiper-button-next flex justify-center items-center h-7 w-7 md:h-9 md:w-9 lg:h-11 lg:w-11 bg-gray-400 rounded-full hover:bg-gray-500"
       >
-        <Icon name="chevronRight" class="w-10 h-10" />
+        <Icon
+          name="chevronRight"
+          class="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"
+        />
       </div>
     </div>
     <div class="flex justify-center my-5">

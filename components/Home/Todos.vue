@@ -1,45 +1,42 @@
 <template>
-  <div class="todo-home d-flex">
-    <div
-      v-for="todo in todos"
-      :key="todo.id"
-      class="todo-card"
-      :style="{ backgroundImage: `url(${todo.image})` }"
-      @mouseenter="hovered = todo.id"
-      @mouseleave="hovered = null"
-    >
-      <div class="overlay"></div>
-      <component :is="todo.icon" class="todo-icon" />
-      <div class="todo-title">{{ todo.title }}</div>
-      <Transition name="scale">
-        <div class="todo-hover" v-if="hovered === todo.id">
-          <div
-            v-for="content in todo.content.split('.').map((c) => c.trim())"
-            :key="content"
-            class="todo-content"
-          >
-            {{ content }}
-          </div>
-          <PrimaryButton>Khám phá </PrimaryButton>
+  <div class="w-full h-[40vh] flex">
+    <div v-for="todo in todos" :key="todo.id" class="w-1/4 h-full relative group">
+      <NuxtImg
+        :src="todo.image"
+        class="w-full h-full object-cover brightness-75"
+      />
+      <Icon
+        :name="todo.icon"
+        class="absolute top-20 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10"
+      />
+      <div>{{ todo.title }}</div>
+      <div
+        class="absolute top-32 left-1/2 -translate-x-1/2 w-[70%] flex flex-col gap-2 justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      >
+        <div
+          v-for="content in todo.content.split('.').map((c) => c.trim())"
+          :key="content"
+          class="text-white text-sm text-center"
+        >
+          {{ content }}
         </div>
-      </Transition>
+        <button
+          class="!px-4 !py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm flex items-center hover:gap-1"
+        >
+          Khám phá <Icon name="forward" class="w-4 h-4" />
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { Building2, Utensils, Landmark, BookOpen } from "lucide-vue-next";
-import PrimaryButton from "@/components/UI/PrimaryButton.vue";
-
-const hovered = ref(null);
-
 const todos = [
   {
     id: 1,
     title: "Ở đâu?",
     content: "Luôn có địa chỉ lưu trú phù hợp ở đâu đó dành riêng cho bạn",
-    icon: Building2,
+    icon: "building",
     image: "/images/home/todo-1.webp",
   },
   {
@@ -47,117 +44,27 @@ const todos = [
     title: "Ăn gì?",
     content:
       "Lựa chọn ẩm thực phong phú thỏa mãn tín đồ ẩm thực. Đa dạng trải nghiệm từ cao cấp đến đường phố",
-    icon: Utensils,
+    icon: "eat",
     image: "/images/home/todo-2.webp",
   },
   {
     id: 3,
     title: "Chơi gì?",
     content: "Tìm kiếm sự độc độc đáo mới lạ",
-    icon: Landmark,
+    icon: "landmark",
     image: "/images/home/todo-3.webp",
   },
   {
     id: 4,
     title: "Cẩm nang du lịch",
     content: "Tận hưởng chuyến du lịch của bạn",
-    icon: BookOpen,
+    icon: "handbook",
     image: "/images/home/todo-4.webp",
   },
 ];
 </script>
 
 <style lang="scss" scoped>
-.todo-card {
-  position: relative;
-  height: 40vh;
-  width: 25%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 4rem;
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-
-  &::after {
-    content: "";
-    pointer-events: none;
-    position: absolute;
-    width: 86%;
-    height: 86%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 4px solid #fff;
-    z-index: $priority-high;
-    opacity: 0;
-    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  &::before {
-    content: "";
-    pointer-events: none;
-    position: absolute;
-    width: 92%;
-    height: 92%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 4px solid #fff;
-    z-index: $priority-high;
-    opacity: 0;
-    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-  }
-
-  .todo-icon {
-    z-index: 2;
-    color: #fff;
-    width: 3rem;
-    height: 3rem;
-    margin-bottom: 1rem;
-  }
-
-  .todo-title {
-    z-index: 2;
-    color: #fff;
-    font-size: 1.8rem;
-  }
-
-  .todo-hover {
-    @include flex-center-vertical;
-    position: absolute;
-    height: calc(100% - 10rem);
-    width: 100%;
-    top: 10rem;
-    left: 0;
-    z-index: 3;
-
-    .todo-content {
-      color: #fff;
-      font-size: 1rem;
-      text-align: center;
-      font-weight: 400;
-      max-width: 80%;
-    }
-  }
-  &:hover {
-    width: 30%;
-    &::after {
-      opacity: 1;
-    }
-    &::before {
-      opacity: 1;
-    }
-  }
-}
-
 .scale-enter-active,
 .scale-leave-active {
   transition: transform 0.5s ease-in-out;
@@ -171,29 +78,5 @@ const todos = [
 .scale-enter-to,
 .scale-leave-from {
   transform: scale(1);
-}
-
-@media (max-width: 900px) {
-  .todo-home {
-    flex-wrap: wrap;
-  }
-  .todo-card {
-    width: 50%;
-    &:hover {
-      width: 50%;
-    }
-  }
-}
-
-@media (max-width: 600px) {
-  .todo-home {
-    grid-template-columns: 1fr;
-  }
-  .todo-card {
-    width: 100%;
-    &:hover {
-      width: 100%;
-    }
-  }
 }
 </style>

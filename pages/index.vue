@@ -1,11 +1,11 @@
 <template>
   <div>
-    <!-- <HomeHero /> -->
-    <!-- <HomeUltilities /> -->
-    <!-- <HomeExplore /> -->
-    <!-- <HomeEvents /> -->
+    <HomeHero />
+    <HomeUtilities />
+    <HomeExplore />
+    <HomeEvents />
+    <HomeTodos />
     <!-- <HomeDetails /> -->
-    <!-- <HomeTodos /> -->
   </div>
 </template>
 

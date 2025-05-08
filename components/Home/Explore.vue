@@ -7,7 +7,7 @@
       {{ t("explore.description") }}
     </p>
     <div
-      class="grid grid-cols-1 grid-rows-5 gap-4 md:grid-cols-4 md:grid-rows-2"
+      class="grid grid-cols-1 grid-rows-5 gap-4 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-4 lg:grid-rows-2"
     >
       <div
         v-for="place in places"
@@ -39,7 +39,9 @@
       </UIPrimaryBtn>
     </div>
 
-    <section class="grid grid-cols-1 grid-rows-1 md:grid-cols-3 md:grid-rows-3 gap-4 h-[80vh]">
+    <section
+      class="grid grid-cols-1 grid-rows-9 md:grid-cols-2 md:grid-rows-5 lg:grid-cols-3 lg:grid-rows-3 gap-4 h-fit md:h-[80vh] lg:h-[80vh]"
+    >
       <div
         v-for="place in fullPlaces"
         :key="place.name"
@@ -51,14 +53,21 @@
           class="w-full h-full hover:scale-105 hover:brightness-75 transition-all duration-300"
         />
         <div class="absolute bottom-5 left-5">
-          <h4 class="text-white text-2xl">{{ place.name }}</h4>
+          <h4
+            class="text-white text-md md:text-xl lg:text-2xl"
+            style="text-shadow: 0 0 10px rgba(0, 0, 0, 0.5)"
+          >
+            {{ place.name }}
+          </h4>
         </div>
       </div>
       <div
-        class="h-full w-full bg-red-600 flex flex-col justify-center items-center gap-4 col-start-2 row-start-2"
+        class="h-full w-full bg-red-600 flex flex-col justify-center items-center gap-4 row-start-5 md:col-start-2 md:row-start-2"
       >
-        <h2 class="text-white text-4xl">{{ t("location") }}</h2>
-        <p class="text-white text-2xl h-8 typing-text relative">
+        <h2 class="text-white text-4xl">
+          {{ t("location") }}
+        </h2>
+        <p class="text-white text-xl h-8 typing-text relative">
           {{ currentText }}
         </p>
       </div>
