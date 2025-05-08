@@ -1,31 +1,42 @@
+<!-- eslint-disable -->
 <template>
-  <div class="w-full h-[40vh] flex">
-    <div v-for="todo in todos" :key="todo.id" class="w-1/4 h-full relative group">
+  <div class="w-full h-[40vh] flex flex-col md:flex-row">
+    <div
+      v-for="todo in todos"
+      :key="todo.id"
+      class="w-full md:w-1/2 h-1/2 md:h-full relative group"
+    >
       <NuxtImg
         :src="todo.image"
         class="w-full h-full object-cover brightness-75"
       />
       <Icon
         :name="todo.icon"
-        class="absolute top-20 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10"
+        class="absolute top-10 md:top-20 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10"
       />
       <div>{{ todo.title }}</div>
       <div
-        class="absolute top-32 left-1/2 -translate-x-1/2 w-[70%] flex flex-col gap-2 justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        class="absolute top-16 md:top-32 left-1/2 -translate-x-1/2 w-[70%] md:w-[80%] flex flex-col gap-2 justify-center items-center opacity-0 scale-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 z-10"
       >
         <div
           v-for="content in todo.content.split('.').map((c) => c.trim())"
           :key="content"
-          class="text-white text-sm text-center"
+          class="text-white text-xs md:text-sm text-center"
         >
           {{ content }}
         </div>
         <button
-          class="!px-4 !py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm flex items-center hover:gap-1"
+          class="!px-4 !py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-xs md:text-sm flex items-center hover:gap-1 cursor-pointer"
         >
-          Khám phá <Icon name="forward" class="w-4 h-4" />
+          {{ $t("button.explore") }} <Icon name="forward" class="w-4 h-4" />
         </button>
       </div>
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] border-2 border-white opacity-0 scale-x-50 group-hover:scale-x-100 group-hover:opacity-100 transition-all duration-300 pointer-events-none`"
+      ></div>
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] border-2 border-white opacity-0 scale-x-50 group-hover:scale-x-100 group-hover:opacity-100 transition-all duration-300 pointer-events-none"
+      ></div>
     </div>
   </div>
 </template>

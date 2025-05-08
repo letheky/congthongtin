@@ -152,7 +152,8 @@
     "title": "Sự kiện"
   },
   "button": {
-    "viewAll": "Xem tất cả"
+    "viewAll": "Xem tất cả",
+    "explore": "Khám phá"
   },
   "tooltip": {
     "search": "Tìm kiếm",
