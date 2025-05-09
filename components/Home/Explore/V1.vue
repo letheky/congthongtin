@@ -14,13 +14,13 @@
         :key="place.name"
         class="relative first-of-type:col-span-1 first-of-type:row-span-1 md:first-of-type:col-span-2 md:first-of-type:row-span-2 col-span-1 row-span-1 overflow-hidden cursor-pointer rounded-md"
       >
-        <img
+        <NuxtImg
           :src="place.image"
           :alt="place.name"
           class="w-full h-full hover:scale-110 transition-all duration-300"
         />
         <div class="w-full h-full absolute top-0 left-0 pointer-events-none">
-          <img
+          <NuxtImg
             src="/images/360-icon.png"
             alt="360° view"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12"
@@ -40,14 +40,14 @@
     </div>
 
     <section
-      class="grid grid-cols-1 grid-rows-9 md:grid-cols-2 md:grid-rows-5 lg:grid-cols-3 lg:grid-rows-3 gap-4 h-fit md:h-[80vh] lg:h-[80vh]"
+      class="grid grid-cols-1 grid-rows-9 md:grid-cols-2 md:grid-rows-5 lg:grid-cols-3 lg:grid-rows-3 gap-4 h-fit lg:h-[80vh]"
     >
       <div
         v-for="place in fullPlaces"
         :key="place.name"
-        class="relative h-full w-full overflow-hidden cursor-pointer rounded-md"
+        class="relative h-80 md:h-60 lg:h-full w-full overflow-hidden cursor-pointer rounded-md"
       >
-        <img
+        <NuxtImg
           :src="place.image"
           :alt="place.name"
           class="w-full h-full hover:scale-105 hover:brightness-75 transition-all duration-300"
@@ -62,7 +62,7 @@
         </div>
       </div>
       <div
-        class="h-full w-full bg-red-600 flex flex-col justify-center items-center gap-4 row-start-5 md:col-start-2 md:row-start-2"
+        class="h-full w-full bg-red-600 flex flex-col justify-center items-center gap-4 row-start-5 md:col-start-1 md:row-start-3 lg:col-start-2 lg:row-start-2"
       >
         <h2 class="text-white text-4xl">
           {{ t("location") }}

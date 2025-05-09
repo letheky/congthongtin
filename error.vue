@@ -10,13 +10,14 @@ useHead({
   },
 });
 </script>
+<!-- eslint-disable -->
 <template>
-  <div class="d-flex justify-center align-center text-center h-100vh">
-    <div>
-      <img src="/images/error-img.svg" width="500" alt="404" />
-      <h1 class="text-h1 pt-3">Opps!!!</h1>
-      <h4 class="text-h4 my-8">Trang bạn tìm không tồn tại.</h4>
-      <v-btn flat color="primary" class="mb-4" to="/">Quay về trang chủ</v-btn>
-    </div>
+  <div class="flex flex-col items-center justify-center h-screen w-full">
+    <img src="/images/error-img.svg" width="500" alt="404" />
+    <h1 class="text-sm md:text-base text-slate-700 pt-3">Opps!!!</h1>
+    <h4 class="text-sm md:text-base text-slate-700 my-8">
+      Trang bạn tìm không tồn tại.
+    </h4>
+    <UIPrimaryBtn to="/">Quay về trang chủ <Icon name="home" class="text-white" /></UIPrimaryBtn>
   </div>
 </template>

@@ -55,17 +55,6 @@ export default defineNuxtConfig({
       },
         // Add other meta tags as needed
       ],
-      script: [{
-        type: "application/ld+json",
-        innerHTML: `
-            {
-              "@context": "http://schema.org",
-              "@type": "WebSite",
-              "name": "Cổng thông tin du lịch Bắc Ninh",
-              "url": "https://bacninh.vietnaminfo.net",
-            }
-          `,
-      },],
     },
   },
   // route rules
@@ -80,6 +69,12 @@ export default defineNuxtConfig({
     }
   },
 
+  runtimeConfig: {
+    public: {
+      serverEndpoint: process.env.NUXT_PUBLIC_API_BASE,
+      baseUrl: process.env.NUXT_PUBLIC_BASE_URL || 'http://localhost:3000',
+    },
+  },
   vite: {
     css: {
       preprocessorOptions: {
@@ -99,7 +94,8 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/i18n',
-    'nuxt-swiper'
+    'nuxt-swiper',
+    "nuxt-seo-utils",
   ],
   //nuxt i18n
   i18n: {

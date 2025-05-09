@@ -2,7 +2,7 @@
   "homeMenu": [{
       "id": 1,
       "label": "Giới thiệu",
-      "href": "#"
+      "href": "/about"
     },
     {
       "id": 2,
@@ -126,6 +126,23 @@
       ]
     }
   ],
+
+  "footer": {
+    "title": "Cổng thông tin quốc gia Bắc Ninh",
+    "description": "Cổng thông tin du lịch Bắc Ninh cung cấp những thông tin hữu ích nhất cho trải nghiệm du lịch của bạn.",
+    "privacyPolicy": "Chính sách bảo mật",
+    "termsOfUse": "Điều khoản sử dụng",
+    "contact": "Liên hệ",
+    "contactHeader": "Thông tin liên hệ",
+    "owner": "SỞ VĂN HÓA THỂ THAO & DU LỊCH BẮC NINH",
+    "address": "Số 15 Lý Thái Tổ - Tp Bắc Ninh - tỉnh Bắc Ninh",
+    "phone": "02223 822 532",
+    "email": "{'eg:svhttdl@bacninh.gov.vn'}",
+    "totalView": "Số lượt truy cập",
+    "viewing": "Đang xem",
+    "copyright": "© Bản quyền 2025, Du lịch Bắc Ninh. Tất cả các quyền được bảo lưu."
+  },
+
   "location": "Bắc Ninh",
   "hero": {
     "title": "Chào mừng bạn đến với",
@@ -151,8 +168,44 @@
   "events": {
     "title": "Sự kiện"
   },
+  "details": {
+    "title": "Colorful Bắc Ninh"
+  },
+
+
+  "contact": {
+    "title": "Liên hệ với chúng tôi",
+    "content": "Bạn có bất kỳ câu hỏi nào? Hãy liên hệ với chúng tôi."
+  },
+
+
+  "article":{
+    "comment":"Bình luận",
+    "View":"Lượt xem",
+    "like":":Lượt thích"
+  },
+
+
+
+  "breadcrumb": {
+    "home": "Trang chủ",
+    "about": "Giới thiệu",
+    "privacyPolicy": "Chính sách bảo mật",
+    "termsOfUse": "Điều khoản sử dụng",
+    "contact": "Liên hệ"
+  },
+  "form": {
+    "title": "Tiêu đề",
+    "name": "Họ và tên",
+    "email": "Email",
+    "phone": "Số điện thoại",
+    "content": "Tin nhắn",
+    "submit": "Gửi tin nhắn",
+    "submitting": "Đang gửi"
+  },
   "button": {
     "viewAll": "Xem tất cả",
+    "viewMore": "Xem thêm",
     "explore": "Khám phá"
   },
   "tooltip": {

@@ -1,10 +1,10 @@
 <!-- eslint-disable -->
 <template>
-  <div class="w-full h-[40vh] flex flex-col md:flex-row">
+  <div class="w-full h-fit md:h-[40vh] flex flex-col md:flex-row">
     <div
       v-for="todo in todos"
       :key="todo.id"
-      class="w-full md:w-1/2 h-1/2 md:h-full relative group"
+      class="w-full md:w-1/2 h-[28vh] md:h-full relative group"
     >
       <NuxtImg
         :src="todo.image"
@@ -12,11 +12,15 @@
       />
       <Icon
         :name="todo.icon"
-        class="absolute top-10 md:top-20 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10"
+        class="absolute top-16 md:top-20 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10"
       />
-      <div>{{ todo.title }}</div>
+      <h3
+        class="text-white text-xl text-center font-bold absolute top-24 md:top-32 left-1/2 -translate-x-1/2 -translate-y-1/2"
+      >
+        {{ todo.title }}
+      </h3>
       <div
-        class="absolute top-16 md:top-32 left-1/2 -translate-x-1/2 w-[70%] md:w-[80%] flex flex-col gap-2 justify-center items-center opacity-0 scale-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 z-10"
+        class="absolute top-32 md:top-40 left-1/2 -translate-x-1/2 w-[70%] md:w-[80%] flex flex-col gap-2 justify-center items-center opacity-0 scale-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 z-10"
       >
         <div
           v-for="content in todo.content.split('.').map((c) => c.trim())"

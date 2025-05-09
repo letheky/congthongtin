@@ -1,8 +1,9 @@
 {
+  "location": "Bac Ninh",
   "homeMenu": [{
       "id": 1,
       "label": "Introduction",
-      "href": "#"
+      "href": "/about"
     },
     {
       "id": 2,
@@ -127,7 +128,6 @@
       ]
     }
   ],
-  "location": "Bac Ninh",
   "hero": {
     "title": "Welcome to",
     "description": "Explore its digital map"
@@ -152,8 +152,67 @@
   "events": {
     "title": "Events"
   },
+  "details": {
+    "title": "Colorful Bac Ninh"
+  },
+
+
+  "footer": {
+    "title": "National Bac Ninh Information Portal",
+    "description": "The National Bac Ninh Tourism Information Portal provides the most useful information for your travel experience.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfUse": "Terms of Use",
+    "contact": "Contact",
+    "contactHeader": "Contact Information",
+    "owner": "BAC NINH CULTURAL AND SPORTS TOURISM DEPARTMENT",
+    "address": "15 Ly Thai To Street - Bac Ninh City - Bac Ninh Province",
+    "phone": "02223 822 532",
+    "email": "{'eg:svhttdl@bacninh.gov.vn'}",
+    "totalView": "Total Views",
+    "viewing": "Viewing",
+    "copyright": "© Copyright 2025, Bac Ninh Tourism. All right reserved."
+  },
+
+
+  
+  "contact": {
+    "title": "Contact us",
+    "content": "Have any questions? Please contact us."
+  },
+
+
+
+  "article":{
+    "comment":"Comments",
+    "View":"Views",
+    "like":"Likes"
+  },
+
+
+
+
+
+
+
+  "breadcrumb": {
+    "home": "Home",
+    "about": "About",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfUse": "Terms of Use",
+    "contact": "Contact"
+  },
+  "form": {
+    "title": "Title",
+    "name": "Full Name",
+    "email": "Email",
+    "phone": "Phone Number",
+    "content": "Message",
+    "submit": "Submit",
+    "submitting": "Submitting"
+  },
   "button": {
     "viewAll": "View All",
+    "viewMore": "View More",
     "explore": "Explore"
   },
   "tooltip": {

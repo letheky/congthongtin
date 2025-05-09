@@ -8,7 +8,9 @@
         : 'bg-transparent',
     ]"
   >
-    <NuxtImg src="/images/logo.webp" alt="logo" class="w-12 h-12" />
+    <NuxtLink to="/">
+      <NuxtImg src="/images/logo.webp" alt="logo" class="w-12 h-12" />
+    </NuxtLink>
     <Icon
       name="menu2"
       class="text-gray-800 w-10 h-10 lg:hidden"
@@ -55,7 +57,7 @@
       </ul>
     </nav>
   </div>
-  
+
   <!-- Mobile & Touchpad header -->
   <TransitionSlideToRight>
     <div
@@ -168,6 +170,7 @@
           <a class="text-red-600" href="mailto:svhttdl@bacninh.gov.vn"
             >svhttdl@bacninh.gov.vn</a
           >
+          <!-- eslint-disable -->
           <br />
           <a class="text-red-600" href="tel:02223 822 532">02223 822 532</a>
           <p class="text-red-600">

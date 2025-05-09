@@ -14,8 +14,9 @@ export default defineAppConfig({
       handbag: "ph:handbag",
       search: "material-symbols:search-rounded",
       pin: "material-symbols:location-on-outline",
-      mapicon:'material-symbols:map-outline',
-      
+      mapicon: 'material-symbols:map-outline',
+      home: "material-symbols:home-outline",
+
       //overlay footer for mobile
       menu: "material-symbols:lists-rounded",
       menu2: "material-symbols:menu",
@@ -49,6 +50,17 @@ export default defineAppConfig({
       multiImg: "fa6-regular:images",
       checked: "lets-icons:done-ring-round-fill",
       mail: "ic:baseline-mail-outline",
+
+      //contact page
+      contactMail: "majesticons:mail-open-line",
+      contactPhone: "material-symbols:phone-in-talk-watchface-indicator",
+      contactMap: "fa6-solid:map-location-dot",
+
+      //about page
+      comments: "uil:comments",
+      view: "ic:baseline-remove-red-eye",
+      like: "material-symbols:favorite"
+
     },
     cssLayer: 'base' // set the css layer to inject to
   },
