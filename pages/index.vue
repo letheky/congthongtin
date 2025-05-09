@@ -13,6 +13,7 @@
 definePageMeta({
   layout: "home",
 });
+
 </script>
 
 <style lang="scss" scoped></style>
