@@ -2,9 +2,10 @@
 <template>
   <div class="w-full h-fit md:h-[40vh] flex flex-col md:flex-row">
     <div
-      v-for="todo in todos"
+      v-for="(todo, index) in todos"
       :key="todo.id"
-      class="w-full md:w-1/2 h-[28vh] md:h-full relative group"
+      class="todo-item w-full md:w-1/2 h-[28vh] md:h-full relative group"
+      :class="{ 'slide-down': index % 2 === 0, 'slide-up': index % 2 !== 0 }"
     >
       <NuxtImg
         :src="todo.image"
@@ -77,6 +78,32 @@ const todos = [
     image: "/images/home/todo-4.webp",
   },
 ];
+
+onMounted(async () => {
+  await nextTick();
+
+  const { $gsap: gsap } = useNuxtApp();
+  const ScrollTrigger = await import("gsap/ScrollTrigger").then(
+    (m) => m.default
+  );
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.utils.toArray(".todo-item").forEach((el) => {
+    const isSlideDown = el.classList.contains("slide-down");
+
+    gsap.from(el, {
+      y: isSlideDown ? -50 : 50,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 85%",
+        toggleActions: "play none none none",
+      },
+    });
+  });
+});
 </script>
 
 <style lang="scss" scoped>

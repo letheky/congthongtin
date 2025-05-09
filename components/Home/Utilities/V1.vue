@@ -3,33 +3,33 @@
     <h3 class="text-4xl font-bold text-center text-slate-700 !mt-4 !mb-10">
       {{ t("utilities.title") }}
     </h3>
-    <div class="px-4 md:px-8 lg:px-10">
+    <div class="!px-20 md:!px-10 lg:!px-20">
       <div
-        class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-2 md:gap-3 lg:gap-4"
+        class="utility-grid grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-2 md:gap-3 lg:gap-4"
       >
         <div
           v-for="utility in utilities"
           :key="utility.name"
-          class="flex flex-col items-center gap-1 md:gap-2 justify-center"
+          class="utility-item flex flex-col items-center gap-1 md:gap-2 justify-center"
         >
           <div class="relative group">
             <div
-              class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300"
+              class="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300"
               :style="{ backgroundColor: utility.bgColor }"
             >
               <Icon
                 :name="utility.icon"
-                class="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8"
+                class="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8"
                 :style="{ color: utility.iconColor }"
               />
             </div>
             <!-- Border animation element that shrinks from middle to outer -->
             <div
               class="absolute inset-0 rounded-full border-2 border-rose-700 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300"
-            ></div>
+            />
           </div>
           <span
-            class="text-slate-700 text-xs sm:text-sm md:text-base lg:text-xl text-center"
+            class="text-slate-700 text-xs sm:text-sm md:text-base lg:text-xl text-center text-nowrap"
             >{{ t(`utilities.${utility.icon}`) }}</span
           >
         </div>
@@ -97,6 +97,25 @@ const utilities = [
     iconColor: "#8540f5",
   },
 ];
+
+onMounted(async () => {
+  await nextTick();
+
+  const { $gsap: gsap } = useNuxtApp();
+
+  gsap.from(".utility-item", {
+    scrollTrigger: {
+      trigger: ".utility-grid",
+      start: "top 85%",
+      toggleActions: "play none none none", // play only once
+    },
+    x: -50,
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.1,
+    ease: "power2.out",
+  });
+});
 </script>
 
 <style lang="scss" scoped>

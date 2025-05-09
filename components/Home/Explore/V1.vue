@@ -40,12 +40,12 @@
     </div>
 
     <section
-      class="grid grid-cols-1 grid-rows-9 md:grid-cols-2 md:grid-rows-5 lg:grid-cols-3 lg:grid-rows-3 gap-4 h-fit lg:h-[80vh]"
+      class="explore-full-grid grid grid-cols-1 grid-rows-9 md:grid-cols-2 md:grid-rows-5 lg:grid-cols-3 lg:grid-rows-3 gap-4 h-fit lg:h-[80vh]"
     >
       <div
         v-for="place in fullPlaces"
         :key="place.name"
-        class="relative h-80 md:h-60 lg:h-full w-full overflow-hidden cursor-pointer rounded-md"
+        class="explore-full-item relative h-80 md:h-60 lg:h-full w-full overflow-hidden cursor-pointer rounded-md"
       >
         <NuxtImg
           :src="place.image"
@@ -62,7 +62,7 @@
         </div>
       </div>
       <div
-        class="h-full w-full bg-red-600 flex flex-col justify-center items-center gap-4 row-start-5 md:col-start-1 md:row-start-3 lg:col-start-2 lg:row-start-2"
+        class="explore-full-item h-full w-full bg-red-600 flex flex-col justify-center items-center gap-4 row-start-5 md:col-start-1 md:row-start-3 lg:col-start-2 lg:row-start-2"
       >
         <h2 class="text-white text-4xl">
           {{ t("location") }}
@@ -185,6 +185,26 @@ const typeText = () => {
 
 onMounted(() => {
   setTimeout(typeText, typingSpeed);
+});
+
+onMounted(async () => {
+  await nextTick();
+
+  const { $gsap: gsap } = useNuxtApp();
+
+  gsap.from(".explore-full-item", {
+    scrollTrigger: {
+      trigger: ".explore-full-grid",
+      start: "top 85%",
+      toggleActions: "play none none none", // play only once
+    },
+    x: -100,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.1,
+    delay: 0.5,
+    ease: "power2.out",
+  });
 });
 </script>
 <style scoped>

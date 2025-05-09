@@ -37,17 +37,18 @@
     <article
       class="absolute top-20 left-10 md:top-40 md:left-48 min-w-fit flex flex-col justify-center gap-5 z-10"
     >
-      <!-- template -->
       <h2
-        class="text-white text-shadow-lg text-4xl font-semibold border-l-4 border-red-600 !pl-4 tracking-tighter overflow-hidden"
-        v-html="wrappedTitle"
-      ></h2>
-
+        class="text-white text-4xl font-semibold border-l-4 border-red-600 !pl-4 tracking-tighter"
+        style="text-shadow: 0 1px 1px #6f6f6f"
+      >
+        {{ t("hero.title") }}
+      </h2>
       <h1
-        class="text-white text-shadow-lg text-7xl font-bold tracking-tight overflow-hidden"
-        v-html="wrappedLocation"
-      ></h1>
-
+        class="text-white text-7xl font-bold tracking-tight"
+        style="text-shadow: 3px 3px 2px #6f6f6f"
+      >
+        {{ t("location") }}
+      </h1>
       <div>
         <UIPrimaryBtn>
           <Icon name="mapicon" class="icon" /> {{ t("hero.description") }}
@@ -61,15 +62,6 @@
 const { t } = useI18n();
 const containerRef = ref(null);
 
-const wrapWords = (text: string) =>
-  text
-    .split(" ")
-    .map((word) => `<span class="word">${word}</span>`)
-    .join(" ");
-
-const wrappedTitle = computed(() => wrapWords(t("hero.title")));
-const wrappedLocation = computed(() => wrapWords(t("location")));
-
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const swiper = useSwiper(containerRef, {
   loop: true,
@@ -80,33 +72,6 @@ const swiper = useSwiper(containerRef, {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
-});
-
-onMounted(() => {
-  const { $gsap: gsap } = useNuxtApp();
-  const h2Words = document.querySelectorAll("h2 .word");
-  const h1Words = document.querySelectorAll("h1 .word");
-
-  gsap.set(h2Words, { y: 50, opacity: 0 });
-  gsap.set(h1Words, { y: 50, opacity: 0 });
-
-  gsap.to(h2Words, {
-    y: 0,
-    opacity: 1,
-    stagger: 0.1,
-    duration: 0.8,
-    ease: "power2.out",
-    delay: 0.3,
-  });
-
-  gsap.to(h1Words, {
-    y: 0,
-    opacity: 1,
-    stagger: 0.1,
-    duration: 0.8,
-    ease: "power2.out",
-    delay: 0.8,
-  });
 });
 </script>
 
