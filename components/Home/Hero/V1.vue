@@ -82,7 +82,8 @@ const swiper = useSwiper(containerRef, {
   },
 });
 
-onMounted(() => {
+onMounted(async () => {
+  await nextTick();
   const { $gsap: gsap, $SplitText: SplitText } = useNuxtApp();
   [heroLocation.value, heroTitle.value].forEach((el, idx) => {
     const split = new SplitText(el, { type: "chars" });

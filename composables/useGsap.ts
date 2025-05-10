@@ -81,7 +81,7 @@ export const useTextReveal = (options: Partial<TextAnimationConfig> = {}) => {
     duration: options.duration || 0.8,
     ease: options.ease || 'power3.out',
     scrollTrigger: options.scrollTrigger || {
-      start: 'top 80%',
+      start: 'top bottom-=50px',
       toggleActions: 'play none none none'
     }
   }
@@ -96,6 +96,7 @@ export const useTextReveal = (options: Partial<TextAnimationConfig> = {}) => {
     customConfig: Partial<TextAnimationConfig> = {}
   ): void => {
     onMounted(async () => {
+      await nextTick();
       const nuxtApp = useNuxtApp()
       const gsap = nuxtApp.$gsap as GSAP
       const SplitText = nuxtApp.$SplitText as unknown as SplitTextConstructor
@@ -179,6 +180,7 @@ export const useSlideIn = (options: Partial<SlideAnimationConfig> = {}) => {
   ): void => {
     onMounted(async () => {
       // Get GSAP from Nuxt app
+      await nextTick();
       const nuxtApp = useNuxtApp()
       const gsap = nuxtApp.$gsap as GSAP
 
@@ -323,6 +325,7 @@ export const useTextScramble = (options: Partial<ScrambleConfig> = {}) => {
     customConfig: Partial<ScrambleConfig> = {}
   ): void => {
     onMounted(async () => {
+      await nextTick();
       const nuxtApp = useNuxtApp()
       const gsap = nuxtApp.$gsap as GSAP
       const SplitText = nuxtApp.$SplitText as unknown as SplitTextConstructor

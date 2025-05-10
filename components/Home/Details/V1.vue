@@ -92,6 +92,7 @@ const { elementRef: detailsTitle, animate: animateTitle } = useTextReveal();
 animateTitle();
 
 onMounted(async () => {
+  await nextTick();
   const { $gsap: gsap } = useNuxtApp();
 
   const isLarge = window.matchMedia("(min-width: 1024px)").matches;
@@ -109,7 +110,7 @@ onMounted(async () => {
     gsap.from(el, {
       scrollTrigger: {
         trigger: el,
-        start: "top 80%",
+        start: "top 100%",
         toggleActions: "play none none none",
       },
       x: fromX,

@@ -21,6 +21,7 @@
           :src="place.image"
           :alt="place.name"
           class="w-full h-full hover:scale-110 transition-all duration-300"
+          preload
         />
         <div class="w-full h-full absolute top-0 left-0 pointer-events-none">
           <NuxtImg
@@ -54,6 +55,7 @@
           :src="place.image"
           :alt="place.name"
           class="w-full h-full hover:scale-105 hover:brightness-75 transition-all duration-300"
+          preload
         />
         <div class="absolute bottom-5 left-5">
           <h4
@@ -197,6 +199,7 @@ onMounted(() => {
 });
 
 onMounted(async () => {
+  await nextTick();
   const { $gsap: gsap } = useNuxtApp();
 
   gsap.utils.toArray(".explore-full-item").forEach((item) => {
@@ -215,6 +218,7 @@ onMounted(async () => {
 });
 
 onMounted(async () => {
+  await nextTick();
   const { $gsap: gsap } = useNuxtApp();
 
   const isLarge = window.matchMedia("(min-width: 1024px)").matches;
@@ -232,7 +236,7 @@ onMounted(async () => {
     gsap.from(el, {
       scrollTrigger: {
         trigger: el,
-        start: "top 80%",
+        start: "top 100%",
         toggleActions: "play none none none",
       },
       x: fromX,
