@@ -188,24 +188,27 @@ onMounted(() => {
 });
 
 onMounted(async () => {
-  await nextTick();
+  await nextTick()
 
-  const { $gsap: gsap } = useNuxtApp();
+  const { $gsap: gsap } = useNuxtApp()
+  const ScrollTrigger = await import('gsap/ScrollTrigger').then(m => m.default)
+  gsap.registerPlugin(ScrollTrigger)
 
-  gsap.from(".explore-full-item", {
-    scrollTrigger: {
-      trigger: ".explore-full-grid",
-      start: "top 85%",
-      toggleActions: "play none none none", // play only once
-    },
-    x: -100,
-    opacity: 0,
-    duration: 1,
-    stagger: 0.1,
-    delay: 0.5,
-    ease: "power2.out",
-  });
-});
+  gsap.utils.toArray('.explore-full-item').forEach((item) => {
+    gsap.from(item, {
+      x: -100,
+      opacity: 0,
+      duration: 1,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: item,
+        start: 'top 90%',
+        toggleActions: 'play none none none',
+      },
+    })
+  })
+})
+
 </script>
 <style scoped>
 .typing-text::after {
