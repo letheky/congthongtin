@@ -3,7 +3,10 @@
   <section
     class="w-full py-4 px-4 md:px-10 lg:px-20 bg-[url('/images/home/events-bg.png')] bg-cover bg-center min-h-[60vh] relative"
   >
-    <h3 class="text-4xl font-bold text-center text-slate-700 mb-10">
+    <h3
+      ref="eventsTitle"
+      class="text-4xl font-bold text-center text-slate-700 mb-10"
+    >
       {{ t("events.title") }}
     </h3>
     <swiper-container
@@ -75,6 +78,7 @@
 </template>
 
 <script setup>
+import { useTextReveal } from "~/composables/useGsap";
 const { t } = useI18n();
 const events = [
   {
@@ -116,6 +120,9 @@ const swiper = useSwiper(containerRef, {
     nextEl: ".swiper-button-next",
   },
 });
+
+const { elementRef: eventsTitle, animate } = useTextReveal();
+animate();
 </script>
 
 <style lang="scss" scoped></style>

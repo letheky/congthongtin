@@ -1,3 +1,5 @@
+//Using for breadcrumbs 
+
 export function useCamelCase() {
   function toCamelCase(str: string): string {
     return str.replace(/[^a-zA-Z0-9 ]/g, '') // Remove special characters .trim()

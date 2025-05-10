@@ -53,7 +53,10 @@
       </h1>
       <div>
         <UIPrimaryBtn>
-          <Icon name="mapicon" class="icon" /> {{ t("hero.description") }}
+          <Icon name="mapicon" class="icon" />
+          <span ref="heroDescription" class="inline-block">
+            {{ t("hero.description") }}
+          </span>
         </UIPrimaryBtn>
       </div>
     </article>
@@ -65,6 +68,7 @@ const { t } = useI18n();
 const containerRef = ref(null);
 const heroLocation = ref(null);
 const heroTitle = ref(null);
+const heroDescription = ref(null);
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const swiper = useSwiper(containerRef, {
@@ -78,7 +82,7 @@ const swiper = useSwiper(containerRef, {
   },
 });
 
-onNuxtReady(() => {
+onMounted(() => {
   const { $gsap: gsap, $SplitText: SplitText } = useNuxtApp();
   [heroLocation.value, heroTitle.value].forEach((el, idx) => {
     const split = new SplitText(el, { type: "chars" });
@@ -104,6 +108,19 @@ onNuxtReady(() => {
         }
       );
     });
+  });
+});
+
+onMounted(async () => {
+  const { $gsap: gsap, $SplitText: SplitText } = useNuxtApp();
+
+  const split = new SplitText(heroDescription.value, { type: "words,chars" });
+  gsap.from(split.chars, {
+    opacity: 0,
+    x: 20,
+    stagger: 0.05,
+    ease: "power2.out",
+    duration: 0.6,
   });
 });
 </script>

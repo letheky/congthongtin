@@ -1,6 +1,9 @@
 <template>
   <section class="!py-10 !px-4 md:!px-10 lg:!px-20">
-    <h3 class="text-4xl font-bold text-center text-slate-700 mb-10">
+    <h3
+      ref="detailsTitle"
+      class="text-4xl font-bold text-center text-slate-700 mb-10"
+    >
       {{ $t("details.title") }}
     </h3>
     <div
@@ -12,7 +15,7 @@
         class="colorful-item rounded-md overflow-hidden relative h-[30vh] md:h-full"
         :class="{ large: index === 0, medium: index === 1 }"
       >
-        <img
+        <NuxtImg
           class="w-full h-full object-cover hover:scale-105 transition-all duration-300"
           :src="place.image"
           :alt="place.name"
@@ -20,7 +23,7 @@
         <div
           class="absolute bottom-2 left-2 w-[95%] h-fit flex items-center gap-2"
         >
-          <img
+          <NuxtImg
             :src="place.user.avatar"
             :alt="place.user.name"
             class="w-10 h-10 rounded-full"
@@ -44,6 +47,7 @@
 </template>
 
 <script setup>
+import { useTextReveal } from "~/composables/useGsap";
 const places = [
   {
     image: "/images/home/colorful-1.webp",
@@ -83,6 +87,38 @@ const places = [
     },
   },
 ];
+
+const { elementRef: detailsTitle, animate: animateTitle } = useTextReveal();
+animateTitle();
+
+onMounted(async () => {
+  const { $gsap: gsap } = useNuxtApp();
+
+  const isLarge = window.matchMedia("(min-width: 1024px)").matches;
+  const items = document.querySelectorAll(".colorful-item");
+
+  items.forEach((el, index) => {
+    let fromX = 0;
+
+    if (isLarge) {
+      fromX = index === 0 ? -200 : 200;
+    } else {
+      fromX = index % 2 === 0 ? 200 : -200;
+    }
+
+    gsap.from(el, {
+      scrollTrigger: {
+        trigger: el,
+        start: "top 80%",
+        toggleActions: "play none none none",
+      },
+      x: fromX,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power2.out",
+    });
+  });
+});
 </script>
 
 <style lang="scss" scoped>

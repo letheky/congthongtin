@@ -1,9 +1,12 @@
 <template>
   <section class="w-full py-4 px-10">
-    <h3 class="mt-10 text-5xl text-red-600 font-bold text-center">
+    <h3
+      ref="exploreTitle"
+      class="mt-10 text-5xl text-red-600 font-bold text-center"
+    >
       {{ t("explore.title") }} {{ t("location") }}
     </h3>
-    <p class="text-gray-800 text-2xl text-center py-5">
+    <p ref="exploreDescription" class="text-gray-800 text-2xl text-center py-5">
       {{ t("explore.description") }}
     </p>
     <div
@@ -12,7 +15,7 @@
       <div
         v-for="place in places"
         :key="place.name"
-        class="relative first-of-type:col-span-1 first-of-type:row-span-1 md:first-of-type:col-span-2 md:first-of-type:row-span-2 col-span-1 row-span-1 overflow-hidden cursor-pointer rounded-md"
+        class="place-card relative first-of-type:col-span-1 first-of-type:row-span-1 md:first-of-type:col-span-2 md:first-of-type:row-span-2 col-span-1 row-span-1 overflow-hidden cursor-pointer rounded-md"
       >
         <NuxtImg
           :src="place.image"
@@ -77,6 +80,7 @@
 
 <script setup>
 // import SecondaryButton from '@/components/UI/SecondaryButton.vue';
+import { useTextReveal } from "~/composables/useGsap";
 import { ref, onMounted } from "vue";
 
 const { t } = useI18n();
@@ -183,41 +187,61 @@ const typeText = () => {
   setTimeout(typeText, typeSpeed);
 };
 
+const { elementRef: exploreTitle, animate: animateTitle } = useTextReveal();
+animateTitle();
+const { elementRef: exploreDescription, animate: animateDes } = useTextReveal();
+animateDes();
+
 onMounted(() => {
   setTimeout(typeText, typingSpeed);
 });
 
 onMounted(async () => {
-  await nextTick()
+  const { $gsap: gsap } = useNuxtApp();
 
-  const { $gsap: gsap } = useNuxtApp()
-  const ScrollTrigger = await import('gsap/ScrollTrigger').then(m => m.default)
-  gsap.registerPlugin(ScrollTrigger)
-
-  gsap.utils.toArray('.explore-full-item').forEach((item) => {
+  gsap.utils.toArray(".explore-full-item").forEach((item) => {
     gsap.from(item, {
       x: -100,
       opacity: 0,
       duration: 1,
-      ease: 'power2.out',
+      ease: "power2.out",
       scrollTrigger: {
         trigger: item,
-        start: 'top 90%',
-        toggleActions: 'play none none none',
+        start: "top 90%",
+        toggleActions: "play none none none",
       },
-    })
-  })
-})
+    });
+  });
+});
 
+onMounted(async () => {
+  const { $gsap: gsap } = useNuxtApp();
 
+  const isLarge = window.matchMedia("(min-width: 1024px)").matches;
+  const items = document.querySelectorAll(".place-card");
 
+  items.forEach((el, index) => {
+    let fromX = 0;
 
+    if (isLarge) {
+      fromX = index === 0 ? -200 : 200;
+    } else {
+      fromX = index % 2 === 0 ? 200 : -200;
+    }
 
-
-
-
-
-
+    gsap.from(el, {
+      scrollTrigger: {
+        trigger: el,
+        start: "top 80%",
+        toggleActions: "play none none none",
+      },
+      x: fromX,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power2.out",
+    });
+  });
+});
 </script>
 <style scoped>
 .typing-text::after {

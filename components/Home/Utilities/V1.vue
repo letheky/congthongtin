@@ -1,6 +1,9 @@
 <template>
   <section class="w-full py-2 relative max-w-full overflow-hidden">
-    <h3 class="text-4xl font-bold text-center text-slate-700 !mt-4 !mb-10">
+    <h3
+      ref="utilitiesTitle"
+      class="text-4xl font-bold text-center text-slate-700 !mt-4 !mb-10"
+    >
       {{ t("utilities.title") }}
     </h3>
     <div class="!px-20 md:!px-10 lg:!px-20">
@@ -9,7 +12,7 @@
       >
         <div
           v-for="utility in utilities"
-          :key="utility.name"
+          :key="utility.icon"
           class="utility-item flex flex-col items-center gap-1 md:gap-2 justify-center"
         >
           <div class="relative group">
@@ -38,7 +41,8 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { useTextReveal, useSlideIn  } from "~/composables/useGsap";
 const { t } = useI18n();
 
 const utilities = [
@@ -98,24 +102,13 @@ const utilities = [
   },
 ];
 
-onMounted(async () => {
-  await nextTick();
+// Use the composable with default options
+const { fromRight } = useSlideIn()
+fromRight('.utility-item', '.utility-grid')
 
-  const { $gsap: gsap } = useNuxtApp();
+const { elementRef: utilitiesTitle, animate } = useTextReveal()
+animate()
 
-  gsap.from(".utility-item", {
-    scrollTrigger: {
-      trigger: ".utility-grid",
-      start: "top 85%",
-      toggleActions: "play none none none", // play only once
-    },
-    x: -50,
-    opacity: 0,
-    duration: 0.6,
-    stagger: 0.1,
-    ease: "power2.out",
-  });
-});
 </script>
 
 <style lang="scss" scoped>
