@@ -1,5 +1,5 @@
 <template>
-  <section class="!py-10 !px-4 md:!px-10 lg:!px-20">
+  <section class="w-full !py-10 !px-4 md:!px-10 lg:!px-20">
     <h3
       ref="detailsTitle"
       class="text-4xl font-bold text-center text-slate-700 mb-10"
@@ -12,7 +12,7 @@
       <div
         v-for="(place, index) in places"
         :key="place.name"
-        class="colorful-item rounded-md overflow-hidden relative h-[30vh] md:h-full"
+        class="colorful-item rounded-md overflow-hidden relative h-80 md:h-[30vh] lg:h-full w-full "
         :class="{ large: index === 0, medium: index === 1 }"
       >
         <NuxtImg
@@ -46,7 +46,7 @@
   </section>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { useTextReveal } from "~/composables/useGsap";
 const { $gsap: gsap } = useNuxtApp();
 const mm = gsap.matchMedia();
@@ -98,33 +98,47 @@ onMounted(async () => {
 
   mm.add("(min-width: 768px)", () => {
     gsap.utils.toArray(".colorful-item").forEach((item, index) => {
-      gsap.from(item, {
-        x: index === 0 ? -200 : 200,
-        opacity: 0,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: item,
-          start: "top 80%",
-          toggleActions: "play none none none",
+      gsap.fromTo(
+        item,
+        {
+          x: index === 0 ? -200 : 200,
+          opacity: 0,
         },
-      });
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: item,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
     });
   });
 
   mm.add("(max-width: 767px)", () => {
     gsap.utils.toArray(".colorful-item").forEach((item, index) => {
-      gsap.from(item, {
-        x: index % 2 === 0 ? -200 : 200,
-        opacity: 0,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: item,
-          start: "top 120%",
-          toggleActions: "play none none none",
+      gsap.fromTo(
+        item,
+        {
+          x: index % 2 === 0 ? -200 : 200,
+          opacity: 0,
         },
-      });
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: item,
+            start: "top 120%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
     });
   });
 });

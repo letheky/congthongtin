@@ -13,7 +13,7 @@
         <div
           v-for="utility in utilities"
           :key="utility.icon"
-          class="utility-item flex flex-col items-center gap-1 md:gap-2 justify-center"
+          class="utility-item flex flex-col items-center gap-1 md:gap-2 justify-center cursor-pointer"
         >
           <div class="relative group">
             <div
@@ -42,7 +42,7 @@
 </template>
 
 <script setup >
-import { useTextReveal, useSlideIn  } from "~/composables/useGsap";
+// import { useTextReveal, useSlideIn  } from "~/composables/useGsap";
 const { t } = useI18n();
 
 const utilities = [

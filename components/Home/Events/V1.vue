@@ -122,8 +122,8 @@ const swiper = useSwiper(containerRef, {
   },
 });
 
-// const { elementRef: eventsTitle, animate } = useTextReveal();
-// animate();
+const { elementRef: eventsTitle, animate } = useTextReveal();
+animate();
 </script>
 
 <style lang="scss" scoped></style>

@@ -64,7 +64,7 @@
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n();
+const { t, locale } = useI18n(); // Access the locale object to watch for changes
 const containerRef = ref(null);
 const heroLocation = ref(null);
 const heroTitle = ref(null);
@@ -82,9 +82,10 @@ const swiper = useSwiper(containerRef, {
   },
 });
 
-onNuxtReady(async () => {
-  await nextTick();
+const animateText = async () => {
   const { $gsap: gsap, $SplitText: SplitText } = useNuxtApp();
+
+  // Animate heroLocation and heroTitle
   [heroLocation.value, heroTitle.value].forEach((el, idx) => {
     const split = new SplitText(el, { type: "chars" });
     const chars = split.chars;
@@ -110,19 +111,33 @@ onNuxtReady(async () => {
       );
     });
   });
-});
 
-onNuxtReady(async () => {
-  const { $gsap: gsap, $SplitText: SplitText } = useNuxtApp();
-
-  const split = new SplitText(heroDescription.value, { type: "words,chars" });
-  gsap.from(split.chars, {
+  // Animate heroDescription
+  const splitDescription = new SplitText(heroDescription.value, {
+    type: "words,chars",
+  });
+  gsap.from(splitDescription.chars, {
     opacity: 0,
     x: 20,
     stagger: 0.05,
     ease: "power2.out",
     duration: 0.6,
   });
+};
+
+// Watch for i18n locale changes and reinitialize animations
+watch(
+  () => locale.value, // Watch the current locale
+  async () => {
+    await nextTick(); // Wait for DOM updates after locale change
+    animateText(); // Reinitialize animations with updated DOM elements
+  }
+);
+
+// Initial animation on Nuxt ready
+onNuxtReady(async () => {
+  await nextTick();
+  animateText();
 });
 </script>
 
