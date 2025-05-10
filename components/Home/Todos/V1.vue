@@ -83,24 +83,40 @@ onMounted(async () => {
   await nextTick();
 
   const { $gsap: gsap } = useNuxtApp();
-  const ScrollTrigger = await import("gsap/ScrollTrigger").then(
-    (m) => m.default
-  );
-  gsap.registerPlugin(ScrollTrigger);
+  const mm = gsap.matchMedia();
 
-  gsap.utils.toArray(".todo-item").forEach((el) => {
-    const isSlideDown = el.classList.contains("slide-down");
+  mm.add("(min-width: 768px)", () => {
+    gsap.utils.toArray(".todo-item").forEach((el) => {
+      const isSlideDown = el.classList.contains("slide-down");
 
-    gsap.from(el, {
-      y: isSlideDown ? -50 : 50,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: el,
-        start: "top 85%",
-        toggleActions: "play none none none",
-      },
+      gsap.from(el, {
+        y: isSlideDown ? -50 : 50,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      });
+    });
+  });
+  mm.add("(max-width: 767px)", () => {
+    gsap.utils.toArray(".todo-item").forEach((el) => {
+      const isSlideDown = el.classList.contains("slide-down");
+
+      gsap.from(el, {
+        y: isSlideDown ? -50 : 50,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 120%",
+          toggleActions: "play none none none",
+        },
+      });
     });
   });
 });
