@@ -42,7 +42,6 @@
 </template>
 
 <script setup >
-// import { useTextReveal, useSlideIn  } from "~/composables/useGsap";
 const { t } = useI18n();
 
 const utilities = [
@@ -112,8 +111,4 @@ animate()
 </script>
 
 <style lang="scss" scoped>
-/* Ensure the component stays contained within its parent */
-section {
-  box-sizing: border-box;
-}
 </style>

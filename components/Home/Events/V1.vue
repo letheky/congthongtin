@@ -80,7 +80,6 @@
 </template>
 
 <script setup lang="ts">
-// import { useTextReveal } from "~/composables/useGsap";
 const events = [
   {
     id: 1,

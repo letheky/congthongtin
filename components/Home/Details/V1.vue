@@ -1,5 +1,7 @@
 <template>
-  <section class="w-full !py-10 !px-4 md:!px-10 lg:!px-20">
+  <section
+    class="w-full !p-4 md:!px-8 md:!py-10 relative max-w-full overflow-hidden"
+  >
     <h3
       ref="detailsTitle"
       class="text-4xl font-bold text-center text-slate-700 mb-10"
@@ -7,12 +9,12 @@
       {{ $t("details.title") }}
     </h3>
     <div
-      class="grid grid-cols-1 grid-rows-4 md:grid-cols-4 md:grid-rows-2 gap-2 !mt-5 h-fit md:h-[50vh] lg:h-[60vh]"
+      class="grid grid-cols-1 grid-rows-4 md:grid-cols-4 md:grid-rows-2 gap-4 !mt-5 h-fit md:h-[50vh] lg:h-[60vh]"
     >
       <div
         v-for="(place, index) in places"
         :key="place.name"
-        class="colorful-item rounded-md overflow-hidden relative h-80 md:h-[30vh] lg:h-full w-full "
+        class="colorful-item rounded-md overflow-hidden relative h-80 md:h-[30vh] lg:h-full w-full"
         :class="{ large: index === 0, medium: index === 1 }"
       >
         <NuxtImg
@@ -46,8 +48,7 @@
   </section>
 </template>
 
-<script lang="ts" setup>
-import { useTextReveal } from "~/composables/useGsap";
+<script setup>
 const { $gsap: gsap } = useNuxtApp();
 const mm = gsap.matchMedia();
 const places = [
@@ -131,7 +132,7 @@ onMounted(async () => {
           x: 0,
           opacity: 1,
           duration: 1,
-          ease: "power2.out",
+
           scrollTrigger: {
             trigger: item,
             start: "top 120%",
