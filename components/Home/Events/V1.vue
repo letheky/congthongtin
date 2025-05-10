@@ -7,7 +7,7 @@
       ref="eventsTitle"
       class="text-4xl font-bold text-center text-slate-700 mb-10"
     >
-      {{ t("events.title") }}
+      {{ $t("events.title") }}
     </h3>
     <swiper-container
       ref="containerRef"
@@ -27,7 +27,9 @@
               class="event-location flex items-center gap-2 mb-2 text-gray-800 mt-2"
             >
               <Icon name="pin" class="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6" />
-              <p class="text-sm md:text-base lg:text-lg">{{ t("location") }}</p>
+              <p class="text-sm md:text-base lg:text-lg">
+                {{ $t("location") }}
+              </p>
             </div>
             <div class="text-gray-800 flex items-center gap-2 mb-2">
               <Icon
@@ -70,16 +72,15 @@
     </div>
     <div class="flex justify-center my-5">
       <UIPrimaryBtn>
-        {{ t("button.viewAll") }}
+        {{ $t("button.viewAll") }}
         <Icon name="forward" class="text-white" />
       </UIPrimaryBtn>
     </div>
   </section>
 </template>
 
-<script setup>
-import { useTextReveal } from "~/composables/useGsap";
-const { t } = useI18n();
+<script setup lang="ts">
+// import { useTextReveal } from "~/composables/useGsap";
 const events = [
   {
     id: 1,
@@ -121,8 +122,8 @@ const swiper = useSwiper(containerRef, {
   },
 });
 
-const { elementRef: eventsTitle, animate } = useTextReveal();
-animate();
+// const { elementRef: eventsTitle, animate } = useTextReveal();
+// animate();
 </script>
 
 <style lang="scss" scoped></style>

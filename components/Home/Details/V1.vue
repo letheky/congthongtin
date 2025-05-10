@@ -48,6 +48,8 @@
 
 <script setup>
 import { useTextReveal } from "~/composables/useGsap";
+const { $gsap: gsap } = useNuxtApp();
+const mm = gsap.matchMedia();
 const places = [
   {
     image: "/images/home/colorful-1.webp",
@@ -93,30 +95,36 @@ animateTitle();
 
 onMounted(async () => {
   await nextTick();
-  const { $gsap: gsap } = useNuxtApp();
 
-  const isLarge = window.matchMedia("(min-width: 1024px)").matches;
-  const items = document.querySelectorAll(".colorful-item");
+  mm.add("(min-width: 768px)", () => {
+    gsap.utils.toArray(".colorful-item").forEach((item, index) => {
+      gsap.from(item, {
+        x: index === 0 ? -200 : 200,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: item,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      });
+    });
+  });
 
-  items.forEach((el, index) => {
-    let fromX = 0;
-
-    if (isLarge) {
-      fromX = index === 0 ? -200 : 200;
-    } else {
-      fromX = index % 2 === 0 ? 200 : -200;
-    }
-
-    gsap.from(el, {
-      scrollTrigger: {
-        trigger: el,
-        start: "top 100%",
-        toggleActions: "play none none none",
-      },
-      x: fromX,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power2.out",
+  mm.add("(max-width: 767px)", () => {
+    gsap.utils.toArray(".colorful-item").forEach((item, index) => {
+      gsap.from(item, {
+        x: index % 2 === 0 ? -200 : 200,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: item,
+          start: "top 120%",
+          toggleActions: "play none none none",
+        },
+      });
     });
   });
 });

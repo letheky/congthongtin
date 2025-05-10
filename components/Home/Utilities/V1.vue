@@ -41,7 +41,7 @@
   </section>
 </template>
 
-<script setup lang="ts">
+<script setup >
 import { useTextReveal, useSlideIn  } from "~/composables/useGsap";
 const { t } = useI18n();
 
