@@ -1,6 +1,6 @@
 <template>
   <section
-    class="w-full !p-4 md:!px-8 md:!py-10 relative max-w-full overflow-hidden"
+    class="w-full !p-4 md:!px-8 md:!py-10 max-w-full overflow-hidden"
   >
     <h3
       ref="detailsTitle"

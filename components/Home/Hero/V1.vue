@@ -39,14 +39,14 @@
     >
       <h2
         ref="heroTitle"
-        class="text-white text-4xl font-semibold border-l-4 border-red-600 !pl-4 tracking-tighter"
+        class="text-white text-2xl md:text-4xl font-semibold border-l-4 border-red-600 !pl-4 tracking-tighter"
         style="text-shadow: 0 1px 1px #6f6f6f"
       >
         {{ t("hero.title") }}
       </h2>
       <h1
         ref="heroLocation"
-        class="text-white text-7xl font-bold tracking-tight"
+        class="text-white text-4xl md:text-7xl font-bold tracking-tight"
         style="text-shadow: 3px 3px 2px #6f6f6f"
       >
         {{ t("location") }}

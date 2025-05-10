@@ -209,12 +209,25 @@ const handleShowSubMenu = (index: number) => {
   }
 };
 
+const preventBodyScroll = () => {
+  if (isOpen.value) {
+    document.body.style.overflow = "hidden";
+    document.body.style.height = "100%";
+  } else {
+    document.body.style.overflow = "";
+    document.body.style.height = "";
+  }
+};
+
+watch(isOpen, preventBodyScroll);
+
 onMounted(() => {
   window.addEventListener("scroll", handleScroll);
 });
 
 onUnmounted(() => {
   window.removeEventListener("scroll", handleScroll);
+  preventBodyScroll(); // Reset body scroll when component unmounts
 });
 </script>
 

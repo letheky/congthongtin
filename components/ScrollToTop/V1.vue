@@ -102,7 +102,7 @@ export default {
   cursor: pointer;
   border: none;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
+  z-index: 20;
   transition: background-color 0.3s, transform 0.2s;
 }
 

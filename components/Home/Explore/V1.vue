@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full py-4 px-10">
+  <section class="w-full py-4 px-10 overflow-hidden">
     <h3
       ref="exploreTitle"
       class="mt-10 text-5xl text-red-600 font-bold text-center"

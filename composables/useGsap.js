@@ -79,9 +79,9 @@ export const useTextReveal = (options = {}) => {
         let startPosition = mergedConfig.scrollTrigger.start; // Default
 
         if (isDesktop) {
-          startPosition = 'top 80%';
+          startPosition = 'top 90%';
         } else if (isMobile) {
-          startPosition = 'top 120%';
+          startPosition = 'top 110%';
         }
 
         gsap.fromTo(
