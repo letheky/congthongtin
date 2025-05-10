@@ -38,12 +38,14 @@
       class="absolute top-20 left-10 md:top-40 md:left-48 min-w-fit flex flex-col justify-center gap-5 z-10"
     >
       <h2
+        ref="heroTitle"
         class="text-white text-4xl font-semibold border-l-4 border-red-600 !pl-4 tracking-tighter"
         style="text-shadow: 0 1px 1px #6f6f6f"
       >
         {{ t("hero.title") }}
       </h2>
       <h1
+        ref="heroLocation"
         class="text-white text-7xl font-bold tracking-tight"
         style="text-shadow: 3px 3px 2px #6f6f6f"
       >
@@ -61,6 +63,8 @@
 <script setup lang="ts">
 const { t } = useI18n();
 const containerRef = ref(null);
+const heroLocation = ref(null);
+const heroTitle = ref(null);
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const swiper = useSwiper(containerRef, {
@@ -72,6 +76,35 @@ const swiper = useSwiper(containerRef, {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
+});
+
+onNuxtReady(() => {
+  const { $gsap: gsap, $SplitText: SplitText } = useNuxtApp();
+  [heroLocation.value, heroTitle.value].forEach((el, idx) => {
+    const split = new SplitText(el, { type: "chars" });
+    const chars = split.chars;
+    const scrambleChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    chars.forEach((char, i) => {
+      const original = char.textContent;
+      gsap.to(
+        {},
+        {
+          duration: 0.2,
+          repeat: 5,
+          repeatDelay: 0,
+          onRepeat: () => {
+            char.textContent =
+              scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+          },
+          onComplete: () => {
+            char.textContent = original;
+          },
+          delay: i * 0.03 - idx * 0.4, // stagger & offset between h2 and h1
+        }
+      );
+    });
+  });
 });
 </script>
 
