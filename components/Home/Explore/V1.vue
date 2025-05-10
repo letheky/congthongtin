@@ -20,7 +20,7 @@
         <NuxtImg
           :src="place.image"
           :alt="place.name"
-          class="w-full h-full hover:scale-110 transition-all duration-300"
+          class="place-card__image w-full h-full hover:scale-110 transition-all duration-300"
           preload
         />
         <div class="w-full h-full absolute top-0 left-0 pointer-events-none">
@@ -202,25 +202,6 @@ onMounted(async () => {
   await nextTick();
   const { $gsap: gsap } = useNuxtApp();
 
-  gsap.utils.toArray(".explore-full-item").forEach((item) => {
-    gsap.from(item, {
-      x: -100,
-      opacity: 0,
-      duration: 1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: item,
-        start: "top 90%",
-        toggleActions: "play none none none",
-      },
-    });
-  });
-});
-
-onMounted(async () => {
-  await nextTick();
-  const { $gsap: gsap } = useNuxtApp();
-
   const isLarge = window.matchMedia("(min-width: 1024px)").matches;
   const items = document.querySelectorAll(".place-card");
 
@@ -236,13 +217,33 @@ onMounted(async () => {
     gsap.from(el, {
       scrollTrigger: {
         trigger: el,
-        start: "top 100%",
+        start: isLarge ? "top 80%" : "top 120%",
         toggleActions: "play none none none",
       },
       x: fromX,
       opacity: 0,
       duration: 0.8,
       ease: "power2.out",
+    });
+  });
+});
+
+onMounted(async () => {
+  await nextTick();
+  const { $gsap: gsap } = useNuxtApp();
+  const isLarge = window.matchMedia("(min-width: 1024px)").matches;
+
+  gsap.utils.toArray(".explore-full-item").forEach((item) => {
+    gsap.from(item, {
+      x: -100,
+      opacity: 0,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: item,
+        start: isLarge ? "top 80%" : "top 120%",
+        toggleActions: "play none none none",
+      },
     });
   });
 });
