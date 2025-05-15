@@ -132,18 +132,7 @@
     "title": "Welcome to",
     "description": "Explore its digital map"
   },
-  "utilities": {
-    "title": "Utilities",
-    "gas": "Gas",
-    "taxi": "Taxi",
-    "bus": "Bus",
-    "atm": "ATM",
-    "market": "Market",
-    "shop": "Shop",
-    "pharmacy": "Pharmacy",
-    "carRental": "Car Rental",
-    "hotline": "Hotline"
-  },
+
   "explore": {
     "title": "Explore",
     "description": "Discover the best places to visit in Bac Ninh",
@@ -205,7 +194,8 @@
     "about": "About",
     "privacyPolicy": "Privacy Policy",
     "termsOfUse": "Terms of Use",
-    "contact": "Contact"
+    "contact": "Contact",
+    "utilities": "Utilities"
   },
   "form": {
     "title": "Title",

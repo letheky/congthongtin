@@ -7,14 +7,14 @@
         class="w-full h-[80vh] relative"
       >
         <swiper-slide
-          v-for="i in 6"
-          :key="i"
+          v-for="image in bannerList.header_list"
+          :key="image.id"
           class="w-full"
           style="height: 80vh"
         >
           <NuxtImg
             class="w-full h-full object-cover"
-            :src="`/images/home/hero-image-${i}.webp`"
+            :src="`${image.file}`"
             :placeholder="5"
             preload
             alt="Hero"
@@ -69,6 +69,8 @@ const containerRef = ref(null);
 const heroLocation = ref(null);
 const heroTitle = ref(null);
 const heroDescription = ref(null);
+
+const { data: bannerList } = await useFetch(`/api/setup/banner`);
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const swiper = useSwiper(containerRef, {

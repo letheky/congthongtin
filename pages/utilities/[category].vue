@@ -8,14 +8,19 @@
 </template>
 
 <script setup>
+definePageMeta({
+  layout: "home",
+})
+
+
 const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
 const { data: textLabelList } = await useFetch("/api/setup/textLabel");
 const currentTextLabel = computed(() =>
-  textLabelList.value.find((item) => item.key === "tienich")
+  textLabelList.value.results.find((item) => item.name === "tienich")
 );
 const currentSmallTextLabel = computed(() =>
-  textLabelList.value.find((item) => item.key === "tienichsmall")
+  textLabelList.value.results.find((item) => item.name === "tienichsmall")
 );
 </script>
 

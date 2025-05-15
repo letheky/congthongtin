@@ -3,7 +3,6 @@
     <LanguageSelectorV1 />
     <HeaderV1 />
     <BreadCrumbV1 />
-    
     <slot />
     <FooterV1 />
     <ScrollToTopV1 />
