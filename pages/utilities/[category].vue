@@ -1,4 +1,5 @@
 <template>
+  
   <div>
     <h3 class="text-center text-3xl text-slate-700 font-semibold">
       {{ currentTextLabel.translations[currentLocale].content }}

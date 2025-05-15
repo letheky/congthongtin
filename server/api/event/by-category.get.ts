@@ -22,11 +22,19 @@ export default defineEventHandler(async (event) => {
     
     const data = await res.json();
     return data;
-  } catch (error) {
-    console.error("Error fetching events:", error);
+  } catch (error: unknown) {
+    console.error("[Events Fetched Error]", error);
+
+    if (error instanceof Error) {
+      throw createError({
+        statusCode: 500,
+        statusMessage: error.message,
+      });
+    }
+
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to fetch events from external API'
+      statusMessage: "Unknown error occurred",
     });
   }
 });
