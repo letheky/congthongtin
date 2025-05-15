@@ -1,50 +1,58 @@
 <template>
   <!-- eslint-disable -->
-  <form
-    method="post"
-    class="w-full grid gap-2 mb-6 md:grid-cols-2"
-    @submit.prevent="handleSubmit"
-  >
-    <input
-      id="name"
-      v-model="form.name"
-      type="text"
-      class="bg-gray-200 border border-gray-300 outline-none !text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 !p-2.5"
-      :placeholder="`${$t('form.name')}`"
-      required
-    />
-    <input
-      id="email"
-      v-model="form.email"
-      type="email"
-      class="bg-gray-200 border border-gray-300 outline-none !text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 !p-2.5"
-      :placeholder="`${$t('form.email')}`"
-      required
-    />
-    <textarea
-      id="content"
-      v-model="form.content"
-      class="bg-gray-200 border border-gray-300 outline-none !text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 !p-2.5 col-span-2 h-48"
-      :placeholder="`${$t('form.content')}`"
-    />
-    <UIPrimaryBtn
-      type="submit"
-      class="font-bold uppercase"
-      :disabled="isSubmitting"
+  <div class="w-ful">
+    <h3 class="text-slate-700 font-semibold text-3xl tracking-tighter !mb-4">
+      0 bình luận
+    </h3>
+    <h3 class="text-slate-700 font-semibold text-3xl tracking-tighter !mb-4">
+      Viết bình luận của bạn
+    </h3>
+    <form
+      method="post"
+      class="w-full grid gap-2 mb-6 md:grid-cols-2"
+      @submit.prevent="handleSubmit"
     >
-      <p class="flex items-center gap-1" :class="{ sending: isSubmitting }">
-        {{ $t(isSubmitting ? "form.submitting" : "form.submit") }}
-        <span
-          class="dot-wave"
-          :style="{ display: isSubmitting ? 'block' : 'none' }"
-        >
-          <span class="dot">.</span>
-          <span class="dot">.</span>
-          <span class="dot">.</span>
-        </span>
-      </p>
-    </UIPrimaryBtn>
-  </form>
+      <input
+        id="name"
+        v-model="form.name"
+        type="text"
+        class="bg-gray-200 border border-gray-300 outline-none !text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 !p-2.5"
+        :placeholder="`${$t('form.name')}`"
+        required
+      />
+      <input
+        id="email"
+        v-model="form.email"
+        type="email"
+        class="bg-gray-200 border border-gray-300 outline-none !text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 !p-2.5"
+        :placeholder="`${$t('form.email')}`"
+        required
+      />
+      <textarea
+        id="content"
+        v-model="form.content"
+        class="bg-gray-200 border border-gray-300 outline-none !text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 !p-2.5 col-span-2 h-48"
+        :placeholder="`${$t('form.content')}`"
+      />
+      <UIPrimaryBtn
+        type="submit"
+        class="font-bold uppercase"
+        :disabled="isSubmitting"
+      >
+        <p class="flex items-center gap-1" :class="{ sending: isSubmitting }">
+          {{ $t(isSubmitting ? "form.submitting" : "form.submit") }}
+          <span
+            class="dot-wave"
+            :style="{ display: isSubmitting ? 'block' : 'none' }"
+          >
+            <span class="dot">.</span>
+            <span class="dot">.</span>
+            <span class="dot">.</span>
+          </span>
+        </p>
+      </UIPrimaryBtn>
+    </form>
+  </div>
 </template>
 
 <script setup lang="ts">

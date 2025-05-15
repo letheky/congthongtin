@@ -59,7 +59,14 @@ export default defineAppConfig({
       //about page
       comments: "uil:comments",
       view: "ic:baseline-remove-red-eye",
-      like: "material-symbols:favorite"
+      like: "material-symbols:favorite",
+
+      //share group
+      facebook: "line-md:facebook",
+      twitter: "mdi:twitter",
+      telegram: "mdi:telegram",
+      linkedin: "line-md:linkedin",
+      pinterst: "bx:bxl-pinterest-alt",
 
     },
     cssLayer: 'base' // set the css layer to inject to

@@ -185,7 +185,13 @@
   "article":{
     "comment":"Comments",
     "View":"Views",
-    "like":"Likes"
+    "like":"Likes",
+    "share":"Shares",
+    "form": {
+      "comment": "Comment",
+      "comments": "Comments",
+      "writeComment": "Write a comment"
+    }
   },
 
 

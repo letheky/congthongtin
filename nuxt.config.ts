@@ -15,25 +15,20 @@ export default defineNuxtConfig({
           rel: "shortcut icon",
           type: "image/x-icon",
           href: "/favicon.ico"
-        },
-        {
-          rel: "icon",
-          type: "image/x-icon",
-          href: "/favicon.ico"
-        },
+        }
       ],
       meta: [
         {
           name: "description",
-          content: "Cổng thông tin du lịch Bắc Ninh cung cấp những thông tin hữu ích nhất cho trải nghiệm du lịch của bạn.",
+          content: "Cổng thông tin du lịch Bắc Ninh cung cấp những thông tin hữu ích nhất cho trải nghiệm du lịch của bạn."
         },
         {
           property: "og:title",
-          content: "Cổng thông tin du lịch Bắc Ninh",
+          content: "Cổng thông tin du lịch Bắc Ninh"
         },
         {
           property: "og:type",
-          content: "website"// change to article if you are using a blog
+          content: "website" // Change to "article" if this is a blog
         },
         {
           property: "og:url",
@@ -41,22 +36,21 @@ export default defineNuxtConfig({
         },
         {
           property: "og:description",
-          content: "Cổng thông tin du lịch Bắc Ninh cung cấp những thông tin hữu ích nhất cho trải nghiệm du lịch của bạn.",
+          content: "Cổng thông tin du lịch Bắc Ninh cung cấp những thông tin hữu ích nhất cho trải nghiệm du lịch của bạn."
         },
         {
           property: "og:image",
-          content: "https://bacninh.vietnaminfo.net/DataFiles/2025/03/Files/20250320-115405-rG5jiF4g.png",
+          content: "https://bacninh.vietnaminfo.net/DataFiles/2025/03/Files/20250320-115405-rG5jiF4g.png"
         },
         {
-          property: "og:sitename",
-          content: "Cổng thông tin du lịch Bắc Ninh",
+          property: "og:site_name",
+          content: "Cổng thông tin du lịch Bắc Ninh"
         },
         {
           name: "robots",
           content: "index, follow"
-        },
-        // Add other meta tags as needed
-      ],
+        }
+      ]
     }
   },
   // route rules
@@ -73,8 +67,8 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      serverEndpoint: process.env.NUXT_PUBLIC_API_BASE,
-      baseUrl: process.env.NUXT_PUBLIC_BASE_URL || 'http://localhost:3000',
+      serverEndpoint: process.env.NUXT_SERVER_ENDPOINT,
+      baseUrl: process.env.NUXT_PUBLIC_BASE_URL,
     },
   },
   vite: {
@@ -87,7 +81,7 @@ export default defineNuxtConfig({
     }
   },
 
-  plugins: ['~/plugins/gsap.js'],
+  plugins: ['~/plugins/gsap.js', '~/plugins/pinia.ts'],
   // modules
   modules: [
     '@nuxt/eslint',
@@ -97,6 +91,8 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/i18n',
+    '@pinia/nuxt',
+    'pinia-plugin-persistedstate/nuxt',
     'nuxt-swiper',
     "nuxt-seo-utils",
   ],
@@ -108,5 +104,6 @@ export default defineNuxtConfig({
       { code: 'vi', name: 'Tiếng Việt', file: 'vi.json' },
       { code: 'en', name: 'English', file: 'en.json' }
     ],
+    detectBrowserLanguage: false,
   },
 })

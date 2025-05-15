@@ -182,7 +182,13 @@
   "article":{
     "comment":"Bình luận",
     "View":"Lượt xem",
-    "like":":Lượt thích"
+    "like":":Lượt thích",
+    "share":"Chia sẻ",
+    "form":{
+      "comment": "Bình luận",
+      "comments": "Bình luận",
+      "writeComment": "Viết bình luận của bạn"
+    }
   },
 
 
