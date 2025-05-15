@@ -68,6 +68,10 @@ export default defineAppConfig({
       linkedin: "line-md:linkedin",
       pinterst: "bx:bxl-pinterest-alt",
 
+      //utilities
+      check: 'mdi:check',
+      website: 'mdi:web'
+
     },
     cssLayer: 'base' // set the css layer to inject to
   },

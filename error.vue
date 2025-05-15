@@ -18,6 +18,6 @@ useHead({
     <h4 class="text-sm md:text-base text-slate-700 my-8">
       Trang bạn tìm không tồn tại.
     </h4>
-    <UIPrimaryBtn to="/">Quay về trang chủ <Icon name="home" class="text-white" /></UIPrimaryBtn>
+    <UIPrimaryBtn ><NuxtLink to="/">Quay về trang chủ </NuxtLink><Icon name="home" class="text-white" /></UIPrimaryBtn>
   </div>
 </template>
