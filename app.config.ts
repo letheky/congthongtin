@@ -75,4 +75,19 @@ export default defineAppConfig({
     },
     cssLayer: 'base' // set the css layer to inject to
   },
+  ui: {
+    pagination: {
+      slots: {
+        root: '',
+        list: 'flex items-center justify-center gap-1',
+        ellipsis: 'pointer-events-none !py-1 !px-1',
+        label: 'min-w-5 text-center',
+        first: 'cursor-pointer',
+        prev: 'cursor-pointer',
+        item: 'cursor-pointer !py-1 !px-2 rounded-md hover:bg-red-400 hover:text-white transition-colors duration-300',
+        next: 'cursor-pointer',
+        last: 'cursor-pointer'
+      }
+    }
+  }
 });

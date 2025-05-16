@@ -1,12 +1,12 @@
 <template>
-  <section class="w-full py-4 px-10 overflow-hidden">
+  <section class="w-full !py-4 !px-10 overflow-hidden">
     <h3
       ref="exploreTitle"
-      class="mt-10 text-5xl text-red-600 font-bold text-center"
+      class="!mt-10 text-5xl text-red-600 font-bold text-center"
     >
       {{ t("explore.title") }} {{ t("location") }}
     </h3>
-    <p ref="exploreDescription" class="text-gray-800 text-2xl text-center py-5">
+    <p ref="exploreDescription" class="text-gray-800 text-2xl text-center !py-5">
       {{ t("explore.description") }}
     </p>
     <div
@@ -36,7 +36,7 @@
       </div>
     </div>
 
-    <div class="my-10 flex justify-center">
+    <div class="!my-10 flex justify-center">
       <UIPrimaryBtn
         >{{ t("button.viewAll") }}
         <Icon name="forward" class="text-white" />

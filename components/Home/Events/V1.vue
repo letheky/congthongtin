@@ -1,11 +1,11 @@
 <!-- eslint-disable vue/html-self-closing -->
 <template>
   <section
-    class="w-full py-4 px-4 md:px-10 lg:px-20 bg-[url('/images/home/events-bg.png')] bg-cover bg-center min-h-[60vh] relative"
+    class="w-full !py-4 !px-4 md:!px-10 lg:!px-20 bg-[url('/images/home/events-bg.png')] bg-cover bg-center min-h-[60vh] relative"
   >
     <h3
       ref="eventsTitle"
-      class="text-4xl font-bold text-center text-slate-700 mb-10"
+      class="text-4xl font-bold text-center text-slate-700 !mb-10"
     >
       {{ $t("events.title") }}
     </h3>
@@ -18,13 +18,13 @@
         <div class="flex h-full justify-between">
           <div class="w-7/12 py-4 px-8">
             <h4
-              class="text-lg md:text-xl lg:text-2xl font-bold text-red-600 mb-2"
+              class="text-lg md:text-xl lg:text-2xl font-bold text-red-600 !mb-2"
             >
               {{ event.title }}
             </h4>
             <hr />
             <div
-              class="event-location flex items-center gap-2 mb-2 text-gray-800 mt-2"
+              class="event-location flex items-center gap-2 !my-2 text-gray-800 "
             >
               <Icon name="pin" class="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6" />
               <p class="text-sm md:text-base lg:text-lg">
@@ -70,7 +70,7 @@
         />
       </div>
     </div>
-    <div class="flex justify-center my-5">
+    <div class="flex justify-center !my-5">
       <UIPrimaryBtn>
         {{ $t("button.viewAll") }}
         <Icon name="forward" class="text-white" />

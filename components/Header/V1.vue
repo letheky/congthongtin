@@ -1,7 +1,7 @@
 <template>
   <!-- Desktop header -->
   <div
-    class="flex items-center justify-around px-10 py-2 gap-4 shadow-md w-full text-blue-950"
+    class="flex items-center justify-around !px-10 !py-2 gap-4 shadow-md w-full text-blue-950"
     :class="[
       isScrolled
         ? 'fixed top-0 transition-all duration-200 z-50 bg-gray-800 shadow-md text-white'
@@ -41,7 +41,7 @@
             <li
               v-for="(child, childIndex) in menuItem.children"
               :key="child.id"
-              class="px-4 py-2 text-nowrap text-sm uppercase border-t-2 border-red-600 hover:text-white hover:bg-red-600 transition-colors duration-300"
+              class="!px-4 !py-2 text-nowrap text-sm uppercase border-t-2 border-red-600 hover:text-white hover:bg-red-600 transition-colors duration-300"
               :class="{
                 'text-gray-800': isScrolled,
               }"

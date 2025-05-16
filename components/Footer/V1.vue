@@ -1,7 +1,7 @@
 <template>
   <footer class="text-white">
     <div
-      class="flex flex-col lg:flex-row gap-8 py-10 px-[10%] bg-gradient-to-r from-yellow-600 to-cyan-700"
+      class="flex flex-col lg:flex-row gap-8 !py-10 !px-[10%] bg-gradient-to-r from-yellow-600 to-cyan-700"
     >
       <div class="w-full lg:w-5/12 flex flex-col gap-4">
         <h4 class="flex items-center gap-2 text-2xl font-bold uppercase">
@@ -69,7 +69,7 @@
         </li>
       </ol>
     </div>
-    <div class="bg-gray-700 py-2 px-4">
+    <div class="bg-gray-700 !py-2 !px-4">
       <p class="text-center">
         {{ $t("footer.copyright") }}
       </p>

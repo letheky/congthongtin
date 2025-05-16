@@ -15,6 +15,7 @@
     "@nuxt/icon": "1.12.0",
     "@nuxt/image": "1.10.0",
     "@nuxt/scripts": "0.11.6",
+    "@nuxt/ui": "^3.1.1",
     "@nuxtjs/i18n": "9.5.4",
     "@nuxtjs/tailwindcss": "6.14.0",
     "@pinia/nuxt": "^0.11.0",
@@ -26,6 +27,7 @@
     "nuxt-swiper": "2.0.0",
     "pinia": "^3.0.2",
     "pinia-plugin-persistedstate": "^4.2.0",
+    "vietnamisland": "^1.0.0",
     "vue": "^3.5.13",
     "vue-router": "^4.5.1"
   },

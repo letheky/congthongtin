@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
 
   // Build the query string for the external API
   let apiUrl = serverEndpoint + GET_CONTACT_BY_CATEGORY;
-
+  
   // If there are query parameters, append them to the API call
   if (Object.keys(query).length > 0) {
     apiUrl += '?' + new URLSearchParams(query as Record<string, string>).toString();

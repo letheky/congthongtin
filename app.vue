@@ -1,14 +1,16 @@
 <template>
   <div class="w-full max-w-full">
-    <NuxtLayout>
-      <NuxtPage
-        :transition="{
-          name: 'page',
-          mode: 'out-in',
-          onBeforeEnter,
-        }"
-      />
-    </NuxtLayout>
+    <UApp>
+      <NuxtLayout>
+        <NuxtPage
+          :transition="{
+            name: 'page',
+            mode: 'out-in',
+            onBeforeEnter,
+          }"
+        />
+      </NuxtLayout>
+    </UApp>
   </div>
 </template>
 

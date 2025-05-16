@@ -71,6 +71,7 @@ export default defineNuxtConfig({
       baseUrl: process.env.NUXT_PUBLIC_BASE_URL,
     },
   },
+  css: ['~/assets/css/main.css'],
   vite: {
     css: {
       preprocessorOptions: {
@@ -89,7 +90,7 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     '@nuxt/scripts',
-    '@nuxtjs/tailwindcss',
+    '@nuxt/ui',
     '@nuxtjs/i18n',
     '@pinia/nuxt',
     'pinia-plugin-persistedstate/nuxt',
