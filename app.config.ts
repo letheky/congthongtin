@@ -2,7 +2,7 @@
 export default defineAppConfig({
   icon: {
     size: "24px", // default <Icon> size applied
-    class: "nuxt-icon", // default <Icon> class applied
+    class: "nuxt-icon flex-none", // default <Icon> class applied
     mode: "css", // default <Icon> mode applied
     aliases: {
       //menu header icon
@@ -70,7 +70,13 @@ export default defineAppConfig({
 
       //utilities
       check: 'mdi:check',
-      website: 'mdi:web'
+      website: 'mdi:web',
+
+      //tour menu
+      house:"material-symbols:house",
+      info:"maki:information-11",
+      image:"material-symbols:imagesmode-outline",
+
 
     },
     cssLayer: 'base' // set the css layer to inject to
@@ -82,12 +88,42 @@ export default defineAppConfig({
         list: 'flex items-center justify-center gap-1',
         ellipsis: 'pointer-events-none !py-1 !px-1',
         label: 'min-w-5 text-center',
-        first: 'cursor-pointer',
+        first: 'cursor-pointer hidden',
         prev: 'cursor-pointer',
         item: 'cursor-pointer !py-1 !px-2 rounded-md hover:bg-red-400 hover:text-white transition-colors duration-300',
-        next: 'cursor-pointer',
-        last: 'cursor-pointer'
+        next: 'cursor-pointer ',
+        last: 'cursor-pointer hidden'
+      }
+    },
+    modal: {
+      slots: {
+        overlay: 'fixed inset-0 bg-elevated/75',
+        content: 'fixed bg-white text-slate-700 divide-y divide-default flex flex-col focus:outline-none',
+        header: 'flex items-center gap-1.5 p-4 sm:px-6 min-h-16',
+        wrapper: '',
+        body: 'flex-1  p-4 sm:p-6 font-semibold',
+        footer: 'flex items-center gap-1.5 p-4 sm:px-6',
+        title: 'text-2xl text-slate-700 font-bold mr-8',
+        description: 'mt-1 text-muted text-sm',
+        close: 'absolute top-4 end-4'
+      },
+      variants: {
+        transition: {
+          true: {
+            overlay: 'data-[state=open]:animate-[fade-in_200ms_ease-out] data-[state=closed]:animate-[fade-out_200ms_ease-in]',
+            content: 'data-[state=open]:animate-[scale-in_200ms_ease-out] data-[state=closed]:animate-[scale-out_200ms_ease-in]'
+          }
+        },
+        fullscreen: {
+          true: {
+            content: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  max-w-7xl w-sm sm:w-lg md:w-3xl xl:w-4xl min-h-48 max-h-none md:max-h-fit overflow-y-auto'
+          },
+          false: {
+            content: 'w-[calc(100vw-2rem)] max-w-lg max-h-[calc(100dvh-2rem)] sm:max-h-[calc(100dvh-4rem)]'
+          }
+        }
       }
     }
+
   }
 });

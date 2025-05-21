@@ -71,7 +71,7 @@ export default defineNuxtConfig({
       baseUrl: process.env.NUXT_PUBLIC_BASE_URL,
     },
   },
-  css: ['~/assets/css/main.css'],
+  css: ['~/assets/css/main.css', 'leaflet/dist/leaflet.css'],
   vite: {
     css: {
       preprocessorOptions: {
@@ -82,7 +82,7 @@ export default defineNuxtConfig({
     }
   },
 
-  plugins: ['~/plugins/gsap.js', '~/plugins/pinia.ts'],
+  plugins: ['~/plugins/gsap.js', '~/plugins/pinia.ts', { src: '~/plugins/leaflet.js', mode: 'client' }],
   // modules
   modules: [
     '@nuxt/eslint',
@@ -107,4 +107,22 @@ export default defineNuxtConfig({
     ],
     detectBrowserLanguage: false,
   },
+  build: {
+    extend(config, { isClient }) {
+      if (isClient) {
+        // Fix Leaflet image paths in Webpack
+        config.module.rules.push({
+          test: /\.(png|svg|jpg|gif)$/,
+          include: /node_modules\/leaflet/,
+          use: [{
+            loader: 'file-loader',
+            options: {
+              name: 'img/[name].[hash:8].[ext]',
+              publicPath: '_nuxt/'
+            }
+          }]
+        })
+      }
+    }
+  }
 })

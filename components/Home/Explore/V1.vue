@@ -4,24 +4,30 @@
       ref="exploreTitle"
       class="!mt-10 text-5xl text-red-600 font-bold text-center"
     >
-      {{ t("explore.title") }} {{ t("location") }}
+      {{ getTranslation(exploreTextLabel, "content") }}
+      {{ getTranslation(locationTextLabel, "content") }}
     </h3>
-    <p ref="exploreDescription" class="text-gray-800 text-2xl text-center !py-5">
-      {{ t("explore.description") }}
+    <p
+      ref="exploreDescription"
+      class="text-gray-800 text-2xl text-center !py-5"
+    >
+      {{ getTranslation(exploreSmallTextLabel, "content") }}
     </p>
     <div
       class="grid grid-cols-1 grid-rows-5 gap-4 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-4 lg:grid-rows-2"
     >
       <div
-        v-for="place in places"
-        :key="place.name"
+        v-for="tour in tourList.results"
+        :key="tour.id"
         class="place-card relative first-of-type:col-span-1 first-of-type:row-span-1 md:first-of-type:col-span-2 md:first-of-type:row-span-2 col-span-1 row-span-1 overflow-hidden cursor-pointer rounded-md"
+        @click="openDetailTour(tour)"
       >
         <NuxtImg
-          :src="place.image"
-          :alt="place.name"
+          :src="tour.thumbnail"
+          :alt="getTranslation(tour, 'name')"
           class="place-card__image w-full h-full hover:scale-110 transition-all duration-300"
           preload
+          :placeholder="[89, 60, 75, 5]"
         />
         <div class="w-full h-full absolute top-0 left-0 pointer-events-none">
           <NuxtImg
@@ -29,8 +35,8 @@
             alt="360° view"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12"
           />
-          <h4 class="text-white text-2xl bottom-5 left-5 absolute">
-            {{ place.name }}
+          <h4 class="text-white text-xl bottom-2 left-3 absolute">
+            {{ getTranslation(tour, "name") }}
           </h4>
         </div>
       </div>
@@ -56,6 +62,7 @@
           :alt="place.name"
           class="w-full h-full hover:scale-105 hover:brightness-75 transition-all duration-300"
           preload
+          :placeholder="5"
         />
         <div class="absolute bottom-5 left-5">
           <h4
@@ -77,6 +84,8 @@
         </p>
       </div>
     </section>
+
+    <ModalV1 :model-value="isTourOpen" :current-tour="currentOpenTour" :close="closeTour" />
   </section>
 </template>
 
@@ -85,36 +94,31 @@
 import { useTextReveal } from "~/composables/useGsap";
 import { ref, onMounted } from "vue";
 
+//Get text label for homepage
+const { getTranslation } = useTranslation();
+const { data: textLabelList } = await useFetch(`/api/setup/textLabel`);
+const exploreTextLabel = computed(() =>
+  textLabelList.value.results.find((item) => item.name === "khampha")
+);
+const locationTextLabel = computed(() =>
+  textLabelList.value.results.find((item) => item.name === "diadiem")
+);
+const exploreSmallTextLabel = computed(() =>
+  textLabelList.value.results.find((item) => item.name === "khamphasmall")
+);
+
+//Get tour data
+const { data: tourList } = await useFetch("/api/tour360/by-category");
+const { isOpen: isTourOpen, close: closeTour, open: openTour } = useModal();
+const currentOpenTour = ref({});
+const openDetailTour = (tour) => {
+  currentOpenTour.value = tour;
+  openTour();
+};
+
 const { t } = useI18n();
 const { $gsap: gsap } = useNuxtApp();
 const mm = gsap.matchMedia();
-const places = [
-  {
-    name: "Văn Miếu Bắc Ninh",
-    image: "/images/home/discovery-1.webp",
-    url: "/van-mieu-bac-ninh",
-  },
-  {
-    name: "Chùa Phù Lưu",
-    image: "/images/home/discovery-2.webp",
-    url: "/chua-phu-luu",
-  },
-  {
-    name: "Đền thờ tiến sĩ Lê Văn Thịnh",
-    image: "/images/home/discovery-3.webp",
-    url: "/den-tho-tien-si",
-  },
-  {
-    name: "Đình Phù Lưu",
-    image: "/images/home/discovery-4.webp",
-    url: "/dinh-phu-luu",
-  },
-  {
-    name: "Chùa Phí Tướng",
-    image: "/images/home/discovery-5.webp",
-    url: "/chua-phi-tuong",
-  },
-];
 
 const fullPlaces = [
   {
@@ -159,6 +163,9 @@ const fullPlaces = [
   },
 ];
 
+/**
+ * * Animation with text, image, icon
+ */
 const texts = t("explore.slogan").split("...");
 
 const currentText = ref("");
@@ -249,7 +256,7 @@ onMounted(async () => {
         ease: "power2.out",
         scrollTrigger: {
           trigger: item,
-          start: "top 80%" ,
+          start: "top 80%",
           toggleActions: "play none none none",
         },
       });

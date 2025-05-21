@@ -5,7 +5,7 @@ export default defineEventHandler(async () => {
   const serverEndpoint = config.public.serverEndpoint;
 
   try {
-    const res = await fetch(`${serverEndpoint}${GET_WEBSITE_TEXT_LABEL}`);
+    const res = await fetch(`${serverEndpoint}${GET_WEBSITE_TEXT_LABEL}?page_size=${10000}`);
 
     if (!res.ok) {
       throw createError({
