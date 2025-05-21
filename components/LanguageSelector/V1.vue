@@ -3,9 +3,9 @@
     class="hidden items-center justify-end !px-10 !py-2 gap-5 bg-gray-800 md:flex"
   >
     <button
-      v-for="loc in locales"
+      v-for="loc in languages.results"
       :key="loc.code"
-      class="flex items-center gap-2"
+      class="flex items-center gap-2 cursor-pointer"
       :class="{
         'text-white': currentLocale === loc.code,
         'text-gray-400': currentLocale !== loc.code,
@@ -13,8 +13,9 @@
       @click.prevent.stop="setLocale(loc.code)"
     >
       <NuxtImg
-        :src="`/images/flags/${loc.code}.png`"
+        :src="loc.icon"
         :alt="`${loc.code} flag`"
+        class="w-4 h-4"
       />
       <p class="text-sm">
         {{ loc.name }}
@@ -40,9 +41,10 @@
 </template>
 
 <script setup lang="ts">
-const { t, locale, locales, setLocale } = useI18n();
+const { t, locale, setLocale } = useI18n();
 
 const currentLocale = computed(() => locale.value);
-</script>
+
+const {data: languages } = await useFetch("/api/setup/language");</script>
 
 <style lang="scss" scoped></style>

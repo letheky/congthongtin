@@ -113,14 +113,17 @@
   }
 }
 
-
-
 /**
 * !Animations
 */
 //Macbook Window PopUp Animation
 .mac-window-enter-active {
-  animation: macWindowIn 2.5s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: macWindowIn 1s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: center center;
+}
+
+.mac-window-leave-active {
+  animation: macWindowOut 1s cubic-bezier(0.22, 1, 0.36, 1);
   transform-origin: center center;
 }
 
@@ -132,6 +135,18 @@
 
   100% {
     transform: scale(1);
+  }
+}
+
+@keyframes macWindowOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.1) translateY(-30px);
   }
 }
 
@@ -278,4 +293,32 @@
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+
+.slide-left-enter-active,
+.slide-left-leave-active,
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition: all 0.2s;
+}
+
+.slide-left-enter-from {
+  opacity: 0;
+  transform: translate(50px, 0);
+}
+
+.slide-left-leave-to {
+  opacity: 0;
+  transform: translate(-50px, 0);
+}
+
+.slide-right-enter-from {
+  opacity: 0;
+  transform: translate(-50px, 0);
+}
+
+.slide-right-leave-to {
+  opacity: 0;
+  transform: translate(50px, 0);
 }

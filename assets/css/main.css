@@ -41,6 +41,11 @@
     scroll-behavior: smooth;
     background-color: #fff;
   }
+  .no-scroll {
+    overflow: hidden;
+    /* Optional: To account for scrollbar width and prevent content shifting */
+    padding-right: var(10px, 0px);
+  }
   ::-webkit-scrollbar {
     width: 10px;
   }
