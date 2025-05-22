@@ -1,4 +1,6 @@
-import { ref } from 'vue'
+import {
+  ref
+} from 'vue'
 
 export default function useModal() {
   const isOpen = ref(false)
@@ -14,6 +16,13 @@ export default function useModal() {
   function toggle() {
     isOpen.value = !isOpen.value
   }
+  watch(isOpen, (value) => {
+    if (value) {
+      document.body.classList.add('no-scroll')
+    } else {
+      document.body.classList.remove('no-scroll')
+    }
+  })
 
   return {
     isOpen,

@@ -76,6 +76,8 @@ export default defineAppConfig({
       house:"material-symbols:house",
       info:"maki:information-11",
       image:"material-symbols:imagesmode-outline",
+      grid: 'lucide:layout-grid'
+      
 
 
     },

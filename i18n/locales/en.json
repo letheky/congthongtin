@@ -162,32 +162,23 @@
     "copyright": "© Copyright 2025, Bac Ninh Tourism. All right reserved."
   },
 
-
-  
   "contact": {
     "title": "Contact us",
     "content": "Have any questions? Please contact us."
   },
 
-
-
-  "article":{
-    "comment":"Comments",
-    "View":"Views",
-    "like":"Likes",
-    "share":"Shares",
+  "article": {
+    "comment": "Comments",
+    "view": "Views",
+    "like": "Likes",
+    "share": "Shares",
     "form": {
       "comment": "Comment",
       "comments": "Comments",
       "writeComment": "Write a comment"
-    }
+    },
+    "warn": "You've already liked this tour"
   },
-
-
-
-
-
-
 
   "breadcrumb": {
     "home": "Home",
@@ -195,7 +186,8 @@
     "privacyPolicy": "Privacy Policy",
     "termsOfUse": "Terms of Use",
     "contact": "Contact",
-    "utilities": "Utilities"
+    "utilities": "Utilities",
+    "tour360": "Tour 360"
   },
   "form": {
     "title": "Title",

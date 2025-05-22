@@ -2,3 +2,42 @@
 @import './_mixins.scss';
 @import './_transition.scss';
 @import './_theme.scss';
+
+
+.dash-btn {
+  padding: 0.5rem 1rem;
+  min-width: fit-content;
+  color: white;
+  border: 1px solid white;
+  border-radius: 2px;
+  font-size: 0.75rem;
+  font-weight: semibold;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+
+  &:hover {
+    color: #324157;
+    border: 1px solid #324157;
+  }
+
+  &:after {
+    content: "";
+    background: white;
+    position: absolute;
+    z-index: -1;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(-45deg) scale(0, 1);
+    transition: all 0.5s;
+  }
+
+  &:hover:after {
+    transform: skewX(-45deg) scale(1, 1);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+}

@@ -51,7 +51,7 @@ export default defineNuxtConfig({
           content: "index, follow"
         }
       ]
-    }
+    },
   },
   // route rules
   routeRules: {
@@ -106,23 +106,5 @@ export default defineNuxtConfig({
       { code: 'en', name: 'English', file: 'en.json' }
     ],
     detectBrowserLanguage: false,
-  },
-  build: {
-    extend(config, { isClient }) {
-      if (isClient) {
-        // Fix Leaflet image paths in Webpack
-        config.module.rules.push({
-          test: /\.(png|svg|jpg|gif)$/,
-          include: /node_modules\/leaflet/,
-          use: [{
-            loader: 'file-loader',
-            options: {
-              name: 'img/[name].[hash:8].[ext]',
-              publicPath: '_nuxt/'
-            }
-          }]
-        })
-      }
-    }
   }
 })

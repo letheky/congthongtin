@@ -43,10 +43,13 @@
     </div>
 
     <div class="!my-10 flex justify-center">
-      <UIPrimaryBtn
-        >{{ t("button.viewAll") }}
+      <NuxtLink
+        to="/tour360"
+        class="flex items-center gap-2 px-4 py-2 rounded-sm text-white bg-red-600 hover:bg-red-700"
+      >
+        {{ t("button.viewAll") }}
         <Icon name="forward" class="text-white" />
-      </UIPrimaryBtn>
+      </NuxtLink>
     </div>
 
     <section
@@ -85,7 +88,12 @@
       </div>
     </section>
 
-    <ModalV1 :model-value="isTourOpen" :current-tour="currentOpenTour" :close="closeTour" />
+    <TourModalDetailV1
+      v-if="isTourOpen"
+      :model-value="isTourOpen"
+      :current-tour-id="currentOpenTourId"
+      :close="handleCloseModal"
+    />
   </section>
 </template>
 
@@ -110,10 +118,16 @@ const exploreSmallTextLabel = computed(() =>
 //Get tour data
 const { data: tourList } = await useFetch("/api/tour360/by-category");
 const { isOpen: isTourOpen, close: closeTour, open: openTour } = useModal();
-const currentOpenTour = ref({});
+const currentOpenTourId = ref(null);
+
 const openDetailTour = (tour) => {
-  currentOpenTour.value = tour;
+  currentOpenTourId.value = tour.id;
   openTour();
+};
+const handleCloseModal = () => {
+  currentOpenTourId.value = null;
+  document.body.classList.remove("no-scroll");
+  closeTour();
 };
 
 const { t } = useI18n();

@@ -6,6 +6,7 @@
 
 <script setup>
 import { QDHoangSa, QDTruongSa, dms2deg } from "vietnamisland";
+const { getTranslation } = useTranslation();
 
 const mapContainer = ref(null);
 let map = null;
@@ -331,21 +332,30 @@ onMounted(async () => {
       }).addTo(map);
 
       // Add popup with target location info if available
-      if (targetLocation.name) {
+      if (getTranslation(targetLocation, "name")) {
         const popupContent = `
           <div style="text-align: center;">
-            <h4 style="margin: 0; font-weight: bold;">${
-              targetLocation.name
-            }</h4>
+            <h4 style="margin: 0; font-weight: bold;">${getTranslation(
+              targetLocation,
+              "name"
+            )}</h4>
             ${
-              targetLocation.address
-                ? `<p style="margin: 5px 0 0;">${targetLocation.address}</p>`
+              getTranslation(targetLocation, "address") !== "-"
+                ? `<p style="margin: 5px 0 0;">${getTranslation(
+                    targetLocation,
+                    "address"
+                  )}</p>`
                 : ""
             }
           </div>
         `;
-        targetMarker.bindPopup(popupContent).openPopup();
+        targetMarker.bindPopup(popupContent);
       }
+
+      // Add click event to pan and zoom to the marker
+      targetMarker.on("click", function () {
+        map.setView(targetMarker.getLatLng(), 15); // Adjust zoom level (15) as needed
+      });
     }
   }
 
@@ -409,7 +419,8 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 #map {
-  height: 400px;
+  height: 100%;
+  min-height: 400px;
   width: 100%;
 }
 /* Hide some unwanted elements from leaflet routing machine */
@@ -428,6 +439,7 @@ onMounted(async () => {
 :deep(.leaflet-routing-alt) {
   max-height: 150px;
   overflow-y: auto;
+  color: black;
   table {
     display: none;
   }

@@ -3,7 +3,7 @@
     <LanguageSelectorV1 />
     <HeaderV1 />
     <BreadCrumbV1 />
-    <slot />
+    <div class="w-full"> <slot /></div>
     <FooterV1 />
     <ScrollToTopV1 />
   </div>

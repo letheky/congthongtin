@@ -3,7 +3,7 @@
     <!-- <GoogleTranslate /> -->
     <LanguageSelectorV1 />
     <HeaderV1 />
-    <slot />
+    <div class="w-full"><slot /></div>
     <FooterV1 />
     <ScrollToTopV1 />
   </div>

@@ -161,26 +161,23 @@
     "title": "Colorful Bắc Ninh"
   },
 
-
   "contact": {
     "title": "Liên hệ với chúng tôi",
     "content": "Bạn có bất kỳ câu hỏi nào? Hãy liên hệ với chúng tôi."
   },
 
-
-  "article":{
-    "comment":"Bình luận",
-    "View":"Lượt xem",
-    "like":":Lượt thích",
-    "share":"Chia sẻ",
-    "form":{
+  "article": {
+    "comment": "Bình luận",
+    "view": "Lượt xem",
+    "like": ":Lượt thích",
+    "share": "Chia sẻ",
+    "form": {
       "comment": "Bình luận",
       "comments": "Bình luận",
       "writeComment": "Viết bình luận của bạn"
-    }
+    },
+    "warn": "Bạn đã like tour này"
   },
-
-
 
   "breadcrumb": {
     "home": "Trang chủ",
@@ -188,7 +185,8 @@
     "privacyPolicy": "Chính sách bảo mật",
     "termsOfUse": "Điều khoản sử dụng",
     "contact": "Liên hệ",
-    "utilities": "Tiện ích"
+    "utilities": "Tiện ích",
+    "tour360": "Tour 360"
   },
   "form": {
     "title": "Tiêu đề",

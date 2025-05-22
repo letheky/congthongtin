@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-html -->
 <!-- eslint-disable vue/html-self-closing -->
 <template>
   <Transition name="mac-window">
@@ -31,8 +32,89 @@
           <iframe
             :src="getTranslation(currentTour, 'link')"
             allow="autoplay; fullscreen; xr-spatial-tracking"
-            class="w-full h-full"
+            class="w-full h-full rounded-md"
           />
+          <Transition name="modal-fade" mode="out-in">
+            <!-- Info tab-->
+            <div
+              v-if="activeTab === 'info'"
+              class="absolute top-0 left-0 w-full h-full bg-slate-950"
+            >
+              <article
+                class="info-article w-[80%] h-[80%] max-h-[80%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 rounded-md shadow-2xl"
+              >
+                <span
+                  class="absolute -top-7 -right-7 w-8 h-8 border-2 border-white rounded-full flex items-center justify-center"
+                >
+                  <Icon
+                    name="close"
+                    class="w-5 h-5 text-white cursor-pointer"
+                    @click="handleChangeActiveTab('home')"
+                  />
+                </span>
+                <div
+                  class="flex items-center justify-end h-full p-8 rounded-md"
+                  :style="{
+                    background: `url(${currentTour.thumbnail}) no-repeat center center/cover`,
+                  }"
+                >
+                  <div
+                    class="info-context w-5/12 overflow-y-scroll max-h-full h-full p-4 gap-2 flex flex-col border-4 border-info-400 rounded-md shadow-xl"
+                    style="background-color: rgba(0, 0, 0, 0.6)"
+                    v-html="getTranslation(currentTour, 'content')"
+                  />
+                </div>
+              </article>
+            </div>
+            <!-- Gallery tab-->
+            <div
+              v-else-if="activeTab === 'gallery'"
+              class="absolute top-0 left-0 w-full h-full bg-slate-950"
+            >
+              <article
+                class="info-article w-[80%] h-[80%] max-h-[80%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 rounded-md shadow-2xl"
+              >
+                <span
+                  class="absolute -top-7 -right-7 w-8 h-8 border-2 border-white rounded-full flex items-center justify-center"
+                >
+                  <Icon
+                    name="close"
+                    class="w-5 h-5 text-white cursor-pointer"
+                    @click="handleChangeActiveTab('home')"
+                  />
+                </span>
+                <div
+                  class="flex items-center justify-center w-full h-full p-12 rounded-md"
+                >
+                  <UICarouselV1 :image-list="currentTour.image_list" />
+                </div>
+              </article>
+            </div>
+            <!-- Map tab-->
+            <div
+              v-else-if="activeTab === 'map'"
+              class="absolute top-0 left-0 w-full h-full bg-slate-950"
+            >
+              <article
+                class="info-article w-[80%] h-[80%] max-h-[80%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 rounded-md shadow-2xl"
+              >
+                <span
+                  class="absolute -top-7 -right-7 w-8 h-8 border-2 border-white rounded-full flex items-center justify-center"
+                >
+                  <Icon
+                    name="close"
+                    class="w-5 h-5 text-white cursor-pointer"
+                    @click="handleChangeActiveTab('home')"
+                  />
+                </span>
+                <div
+                  class="flex items-center justify-center w-full h-full p-12 rounded-md"
+                >
+                  <UIMapV1 :target-location="currentTour" />
+                </div>
+              </article>
+            </div>
+          </Transition>
         </div>
         <div class="detail-modal-footer absolute bottom-0 left-0 w-full z-10" />
         <div
@@ -42,82 +124,37 @@
           class="detail-modal-footer-overlay-menu absolute bottom-0 right-0 h-15 w-[40%] z-10 flex items-center justify-center gap-4"
         >
           <UTooltip
+            v-for="tab in tabs"
+            :key="tab.id"
             :content="{
               side: 'top',
               sideOffset: 8,
             }"
-            text="View tour"
+            :text="tab.tooltip"
           >
-            <span class="menu-item">
-              <Icon name="house" />
-            </span>
-          </UTooltip>
-          <UTooltip
-            :content="{
-              side: 'top',
-              sideOffset: 8,
-            }"
-            text="View place details"
-          >
-            <span class="menu-item" >
-              <Icon name="info" />
-            </span>
-          </UTooltip>
-          <UTooltip
-            :content="{
-              side: 'top',
-              sideOffset: 8,
-            }"
-            text="View gallary"
-          >
-            <span class="menu-item">
-              <Icon name="image" />
-            </span>
-          </UTooltip>
-          <UTooltip
-            :content="{
-              side: 'top',
-              sideOffset: 8,
-            }"
-            text="View on map"
-          >
-            <span class="menu-item">
-              <Icon name="pin" />
-            </span>
-          </UTooltip>
-          <div style="position: relative; display: inline-block">
-            <UPopover
-              :popper="{ placement: 'top', offset: 8, align: 'center' }"
+            <span
+              class="menu-item"
+              :class="activeTab === tab.id ? 'active' : ''"
+              @click="handleChangeActiveTab(tab.id)"
             >
-              <span class="menu-item">
-                <Icon name="website" />
-              </span>
-              <template #content>
-                <LanguageSelectorV2 />
-              </template>
-            </UPopover>
-          </div>
+              <Icon :name="tab.icon" />
+            </span>
+          </UTooltip>
         </div>
       </div>
-      <!-- <TourModalDetailInfoV1
-        :model-value="isInfoOpen"
-        :tour-banner="currentTour.thumbnail"
-        :tour-context="getTranslation(currentTour, 'content')"
-        :close="closeInfo"
-      /> -->
     </div>
   </Transition>
 </template>
 
 <script setup>
 const { getTranslation } = useTranslation();
-const { modelValue, currentTour, close } = defineProps({
+const { modelValue, currentTourId, close } = defineProps({
   modelValue: {
     type: Boolean,
     required: true,
   },
-  currentTour: {
-    type: Object,
+  currentTourId: {
+    type: String,
     required: true,
   },
   close: {
@@ -125,22 +162,49 @@ const { modelValue, currentTour, close } = defineProps({
     required: true,
   },
 });
+//Fetch tour data
+const { data: currentTour } = await useFetch(`/api/tour360/${currentTourId}`);
 
-// const { isOpen: isInfoOpen, close: closeInfo, open: openInfo } = useModal();
-// const handleOpenInfo = () => {
-//   openInfo();
-// };
+//Active tab
+const tabs = [
+  {
+    id: "home",
+    label: "Home",
+    icon: "house",
+    tooltip: "View tour",
+  },
+  {
+    id: "info",
+    label: "Info",
+    icon: "info",
+    tooltip: "View place details",
+  },
+  {
+    id: "gallery",
+    label: "Gallery",
+    icon: "image",
+    tooltip: "View gallery",
+  },
+  {
+    id: "map",
+    label: "Map",
+    icon: "pin",
+    tooltip: "View on map",
+  },
+];
+const activeTab = ref("home");
+const handleChangeActiveTab = (tab) => {
+  activeTab.value = tab;
+};
 
 // Watch the destructured `modelValue` prop
 watch(
   () => modelValue,
   (newValue) => {
-    if (newValue) {
-      // Modal is open, add class to body
-      document.body.classList.add("no-scroll");
-    } else {
-      // Modal is closed, remove class from body
-      document.body.classList.remove("no-scroll");
+    if (import.meta.client) {
+      if (newValue) {
+        document.body.classList.add("no-scroll");
+      }
     }
   },
   { immediate: true }
@@ -179,6 +243,34 @@ $modal-footer-height: 0.5rem;
       width: 100%;
       height: calc(100% - 2rem);
       margin-top: 2rem;
+      background-color: #000000;
+
+      .info-article {
+        background: linear-gradient(
+          135deg,
+          #ffc6ef 30%,
+          #fff3db 30%,
+          #fff3db 70%,
+          #a2efd7 70%
+        );
+        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(2rem);
+        .info-context {
+          &::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0);
+          }
+          &::-webkit-scrollbar-thumb {
+            height: 9px;
+            width: 9px;
+            border-radius: 4px;
+            background-color: #d5ac68;
+          }
+          &::-webkit-scrollbar {
+            height: 9px;
+            width: 9px;
+          }
+        }
+      }
     }
 
     .detail-modal-footer {
@@ -202,6 +294,7 @@ $modal-footer-height: 0.5rem;
         border-radius: 50%;
         color: #fff;
         background-color: #82181a;
+        &.active,
         &:hover {
           background-color: #fff;
           color: #82181a;
