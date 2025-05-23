@@ -2,6 +2,7 @@
 export const GET_WEBSITE_BANNER = 'setup/banner/';
 export const GET_WEBSITE_INFO = 'setup/info/';
 export const GET_WEBSITE_LANGUAGE = 'setup/language/';
+export const GET_WEBSITE_LANGUAGE_TRANSLATE = 'setup/language/translate/';
 export const GET_WEBSITE_PRIVACY_POLICY = 'setup/policy/';
 export const GET_WEBSITE_TERMS = 'setup/terms/';
 export const GET_SOCIAL_LINK = 'setup/social-link/';

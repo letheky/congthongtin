@@ -56,24 +56,25 @@
       class="explore-full-grid grid grid-cols-1 grid-rows-9 md:grid-cols-2 md:grid-rows-5 lg:grid-cols-3 lg:grid-rows-3 gap-4 h-fit lg:h-[80vh]"
     >
       <div
-        v-for="place in fullPlaces"
-        :key="place.name"
+        v-for="place in destinationList.results"
+        :key="place.id"
         class="explore-full-item relative h-80 md:h-60 lg:h-full w-full overflow-hidden cursor-pointer rounded-md"
       >
         <NuxtImg
-          :src="place.image"
-          :alt="place.name"
+          :src="place.thumbnail"
+          :alt="getTranslation(place, 'name')"
           class="w-full h-full hover:scale-105 hover:brightness-75 transition-all duration-300"
           preload
           :placeholder="5"
         />
         <div class="absolute bottom-5 left-5">
-          <h4
+          <NuxtLink
+            :to="`/destination/${place.id}`"
             class="text-white text-md md:text-xl lg:text-2xl"
             style="text-shadow: 0 0 10px rgba(0, 0, 0, 0.5)"
           >
-            {{ place.name }}
-          </h4>
+            {{ getTranslation(place, "name") }}
+          </NuxtLink>
         </div>
       </div>
       <div
@@ -88,19 +89,20 @@
       </div>
     </section>
 
-    <TourModalDetailV1
-      v-if="isTourOpen"
-      :model-value="isTourOpen"
-      :current-tour-id="currentOpenTourId"
-      :close="handleCloseModal"
-    />
+    <Transition name="position-fade" mode="out-in">
+      <TourModalDetailV1
+        v-if="isTourOpen"
+        :model-value="isTourOpen"
+        :current-tour-id="currentOpenTourId"
+        :close="handleCloseModal"
+      />
+    </Transition>
   </section>
 </template>
 
 <script setup>
-// import SecondaryButton from '@/components/UI/SecondaryButton.vue';
+import useStore from "~/store/useStore";
 import { useTextReveal } from "~/composables/useGsap";
-import { ref, onMounted } from "vue";
 
 //Get text label for homepage
 const { getTranslation } = useTranslation();
@@ -130,59 +132,26 @@ const handleCloseModal = () => {
   closeTour();
 };
 
+//Get destination data
+const { data: destinationList } = useFetch(
+  "/api/position/by-category?page_size=8"
+);
+
+//Other setup
 const { t } = useI18n();
 const { $gsap: gsap } = useNuxtApp();
 const mm = gsap.matchMedia();
 
-const fullPlaces = [
-  {
-    name: "Chùa Bút Tháp - Kiệt tác của lịch sử",
-    image: "/images/home/explore-1.webp",
-    url: "/chua-but-thap",
-  },
-  {
-    name: "Chùa Dâu – ngôi chùa cổ nhất Việt Nam",
-    image: "/images/home/explore-2.webp",
-    url: "/chua-dau",
-  },
-  {
-    name: "Di tích lịch sử Khu lăng mộ và đền thờ các vị Vua triều Lý",
-    image: "/images/home/explore-3.webp",
-    url: "/lang-mo-den-tho-vua-ly",
-  },
-  {
-    name: "Di tích lịch sử và kiến trúc nghệ thuật chùa Phật Tích",
-    image: "/images/home/explore-4.webp",
-    url: "/chua-phat-tich",
-  },
-  {
-    name: "Di tích lịch sử, kiến trúc nghệ thuật đình Đình Bảng",
-    image: "/images/home/explore-5.webp",
-    url: "/dinh-dinh-bang",
-  },
-  {
-    name: "Cụm di tích lịch sử, cách mạng Đình, Đền, Chùa Đồng Kỵ",
-    image: "/images/home/explore-6.webp",
-    url: "/cum-di-tich-dong-ky",
-  },
-  {
-    name: "Cụm di tích Lăng và Đền thờ Cao Lỗ Vương",
-    image: "/images/home/explore-7.webp",
-    url: "/lang-den-cao-lo-vuong",
-  },
-  {
-    name: "Thành cổ Luy Lâu",
-    image: "/images/home/explore-8.webp",
-    url: "/thanh-co-luy-lau",
-  },
-];
-
 /**
  * * Animation with text, image, icon
  */
+const websiteInfoStore = useStore();
 const texts = t("explore.slogan").split("...");
 
-const currentText = ref("");
+const currentText = ref(
+  getTranslation.value(websiteInfoStore.websiteInfo.value, "slogan")
+);
+
 const currentIndex = ref(0);
 const isDeleting = ref(false);
 const typingSpeed = 150;

@@ -12,11 +12,7 @@
       }"
       @click.prevent.stop="setLocale(loc.code)"
     >
-      <NuxtImg
-        :src="loc.icon"
-        :alt="`${loc.code} flag`"
-        class="w-4 h-4"
-      />
+      <NuxtImg :src="loc.icon" :alt="`${loc.code} flag`" class="w-4 h-4" />
       <p class="text-sm">
         {{ loc.name }}
       </p>
@@ -37,6 +33,8 @@
         {{ t("tooltip.login") }}
       </div>
     </div>
+    <!-- In dev -->
+    <!-- <UIThemeSwitcherV1 /> -->
   </div>
 </template>
 
@@ -45,6 +43,7 @@ const { t, locale, setLocale } = useI18n();
 
 const currentLocale = computed(() => locale.value);
 
-const {data: languages } = await useFetch("/api/setup/language");</script>
+const { data: languages } = await useFetch("/api/setup/language");
+</script>
 
 <style lang="scss" scoped></style>

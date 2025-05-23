@@ -28,6 +28,7 @@
           <NuxtImg
             :src="place.user.avatar"
             :alt="place.user.name"
+            format="webp"
             class="w-10 h-10 rounded-full"
           />
 

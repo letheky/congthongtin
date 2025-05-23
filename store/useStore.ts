@@ -1,18 +1,23 @@
-import type { WebsiteInfo } from "~/types/websiteInfo"
+import type { WebsiteInfo } from "~/types/websiteInfo"; // Make sure this path is correct
 
 const useStore = defineStore('store', {
     state: () => ({
-        websiteInfo: {},
+        websiteInfo: {} as WebsiteInfo, // Initialize with an empty WebsiteInfo object
+        provinceList: [],
+        districtList: [],
+        countryList: [],
+        wardList: [],
+        textLabelList: [],
         CurrentLang: 'vi'
     }),
     actions: {
         setWebsiteInfo(data: WebsiteInfo) {
-            this.websiteInfo = data
-        }
+            this.websiteInfo = data;
+        },
     },
     persist: {
-        storage: sessionStorage
-    }
-})
+        storage: piniaPluginPersistedstate.sessionStorage()
+    },
+});
 
-export default useStore
+export default useStore;

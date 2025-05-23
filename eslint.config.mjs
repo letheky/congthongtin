@@ -6,7 +6,7 @@ export default withNuxt({
   rules: {
     "vue/html-self-closing": ["error", {
       html: {
-        void: "never",
+        void: 'any',
         normal: "always",
         component: "always"
       },

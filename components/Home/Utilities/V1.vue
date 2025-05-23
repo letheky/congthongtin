@@ -20,6 +20,7 @@
             <NuxtImg
               class="w-10 h-10 md:w-12 md:h-12 lg:w-20 lg:h-20 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300"
               :src="utility.thumbnail || utility.image"
+              :alt="utility.translations[currentLocale].name"
             />
             <!-- Border animation element that shrinks from middle to outer -->
             <div

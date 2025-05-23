@@ -9,6 +9,7 @@
     >
       <NuxtImg
         :src="todo.image"
+        :alt="todo.title"
         class="w-full h-full object-cover brightness-75"
       />
       <Icon

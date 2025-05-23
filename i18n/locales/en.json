@@ -172,12 +172,16 @@
     "view": "Views",
     "like": "Likes",
     "share": "Shares",
+    "rate": "Rate",
     "form": {
+      "rateTitle":"Leave a review",
       "comment": "Comment",
       "comments": "Comments",
       "writeComment": "Write a comment"
     },
-    "warn": "You've already liked this tour"
+    "warn": "You've already liked this tour",
+    "service":"Service",
+    "contact":"Contact"
   },
 
   "breadcrumb": {
@@ -187,7 +191,8 @@
     "termsOfUse": "Terms of Use",
     "contact": "Contact",
     "utilities": "Utilities",
-    "tour360": "Tour 360"
+    "tour360": "Tour 360",
+    "destination":"Destination"
   },
   "form": {
     "title": "Title",

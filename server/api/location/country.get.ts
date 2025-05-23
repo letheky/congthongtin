@@ -5,7 +5,7 @@ export default defineEventHandler(async () => {
   const serverEndpoint = config.public.serverEndpoint;
 
   try {
-    const res = await fetch(`${serverEndpoint}${GET_ALL_COUNTRY}`);
+    const res = await fetch(`${serverEndpoint}${GET_ALL_COUNTRY}?page_size=${10000}`);
     const data = await res.json();
     return data;
   }

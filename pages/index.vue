@@ -21,6 +21,7 @@ const { data: textLabelList } = await useFetch("/api/setup/textLabel");
 const find = (text) => {
   return textLabelList.value.results.find((el) => el.name === text);
 };
+
 </script>
 
 <style lang="scss" scoped></style>

@@ -1,4 +1,4 @@
-import { GET_ALL_PROVINCE } from "../const";
+import { GET_ALL_WARD } from "../const";
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig();
@@ -6,11 +6,11 @@ export default defineEventHandler(async (event) => {
   const query = getQuery(event);
 
   // Build the query string for the external API
-  let apiUrl = serverEndpoint + GET_ALL_PROVINCE;
+  let apiUrl = serverEndpoint + GET_ALL_WARD;
 
   // If there are query parameters, append them to the API call
   if (Object.keys(query).length > 0) {
-    apiUrl += '?' + new URLSearchParams(query as Record<string, string>).toString();
+    apiUrl += '?' + new URLSearchParams(query as Record<string, string>).toString() + `page_size=${10000}`;
   }
 
   try {

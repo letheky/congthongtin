@@ -169,14 +169,18 @@
   "article": {
     "comment": "Bình luận",
     "view": "Lượt xem",
-    "like": ":Lượt thích",
+    "like": "Lượt thích",
     "share": "Chia sẻ",
+    "rate": "Đánh giá",
     "form": {
+      "rateTitle":"Viết đánh giá",
       "comment": "Bình luận",
       "comments": "Bình luận",
       "writeComment": "Viết bình luận của bạn"
     },
-    "warn": "Bạn đã like tour này"
+    "warn": "Bạn đã like tour này",
+    "service":"Dịch vụ",
+    "contact":"Liên hệ"
   },
 
   "breadcrumb": {
@@ -186,7 +190,8 @@
     "termsOfUse": "Điều khoản sử dụng",
     "contact": "Liên hệ",
     "utilities": "Tiện ích",
-    "tour360": "Tour 360"
+    "tour360": "Tour 360",
+    "destination":"Điểm đến"
   },
   "form": {
     "title": "Tiêu đề",

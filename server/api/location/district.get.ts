@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
 
   // If there are query parameters, append them to the API call
   if (Object.keys(query).length > 0) {
-    apiUrl += '?' + new URLSearchParams(query as Record<string, string>).toString();
+    apiUrl += '?' + new URLSearchParams(query as Record<string, string>).toString() + `page_size=${10000}`;
   }
 
   try {

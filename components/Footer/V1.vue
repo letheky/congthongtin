@@ -39,7 +39,7 @@
         <ol class="flex flex-col gap-2">
           <li class="flex items-center gap-2">
             <Icon name="pin" />
-            <a>{{ $t("footer.address") }}</a>
+            <p>{{ $t("footer.address") }}</p>
           </li>
           <li class="flex items-center gap-2">
             <Icon name="hotline" />
