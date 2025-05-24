@@ -189,7 +189,7 @@ onMounted(async () => {
         ).addTo(map);
 
         // Add popup with target location info if available
-        if (getTranslation(targetLocation, "name")) {
+        if (getTranslation.value(targetLocation, "name")) {
           const popupContent = `
             <div style="
                     position: relative;
@@ -200,8 +200,8 @@ onMounted(async () => {
                   <img src=${
                     targetLocation.thumbnail
                   } class="w-full  h-full object-cover" style="mask-image: linear-gradient(rgb(0 0 0 / 100%), transparent)"/>
-              <h4 class=" absolute top-10 left-1/2 -translate-x-1/2 -translate-y-1/2 font-bold text-white pt-10 text-center uppercase text-2xl text-shadow-lg text-nowrap">
-                ${getTranslation(targetLocation, "name")}
+              <h4 class=" absolute top-10 left-1/2 -translate-x-1/2 -translate-y-1/2 font-bold text-white pt-10 text-center uppercase text-2xl text-shadow-lg w-full">
+                ${getTranslation.value(targetLocation, "name")}
               </h4>
               <div class="absolute top-7/12 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex justify-center gap-4 text-white text-shadow-lg">
                 <button class="dash-btn" data-action="open-tour" data-tour-id="${

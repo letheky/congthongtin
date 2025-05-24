@@ -164,6 +164,9 @@ export default defineAppConfig({
           }
         }
       }
+    },
+    form: {
+      base: ''
     }
   }
 });

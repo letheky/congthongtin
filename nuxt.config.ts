@@ -112,6 +112,7 @@ export default defineNuxtConfig({
     'pinia-plugin-persistedstate/nuxt',
     'nuxt-swiper',
     "nuxt-seo-utils",
+    'dayjs-nuxt'
   ],
   //nuxt i18n
   i18n: {
@@ -122,5 +123,11 @@ export default defineNuxtConfig({
       { code: 'en', name: 'English', file: 'en.json' }
     ],
     detectBrowserLanguage: false,
+  },
+  dayjs: {
+    locales: ['en', 'vi'],
+    plugins: ['relativeTime', 'utc', 'timezone'],
+    defaultLocale: 'vi',
+    defaultTimezone: 'Asia/Bangkok',
   }
 })

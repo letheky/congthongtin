@@ -56,7 +56,7 @@
       class="explore-full-grid grid grid-cols-1 grid-rows-9 md:grid-cols-2 md:grid-rows-5 lg:grid-cols-3 lg:grid-rows-3 gap-4 h-fit lg:h-[80vh]"
     >
       <div
-        v-for="place in destinationList.results"
+        v-for="place in destinationList?.results"
         :key="place.id"
         class="explore-full-item relative h-80 md:h-60 lg:h-full w-full overflow-hidden cursor-pointer rounded-md"
       >

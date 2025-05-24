@@ -1,6 +1,13 @@
 <template>
   <ClientOnly>
-    <div id="map" ref="mapContainer" />
+    <div
+      id="map"
+      ref="mapContainer"
+      :style="{
+        maxHeight: zoomLevel ? '250px' : '400px',
+        minHeight: zoomLevel ? '250px' : '400px',
+      }"
+    />
   </ClientOnly>
 </template>
 
@@ -14,10 +21,18 @@ let myLocation;
 let routingControl;
 let L = null; // Store Leaflet reference globally in the component
 
-const { targetLocation } = defineProps({
+const { targetLocation, showDirection, zoomLevel } = defineProps({
   targetLocation: {
     type: Object,
     required: true,
+  },
+  showDirection: {
+    type: Boolean,
+    default: true,
+  },
+  zoomLevel: {
+    type: Number,
+    default: 15,
   },
 });
 
@@ -43,7 +58,7 @@ onMounted(async () => {
     initMap();
     addVietnamIslandLocationMarker();
     addTargetLocationMarker();
-    addMyLocationMarker();
+    if (showDirection) addMyLocationMarker();
   } catch (error) {
     console.error("Error initializing map:", error);
   }
@@ -332,16 +347,16 @@ onMounted(async () => {
       }).addTo(map);
 
       // Add popup with target location info if available
-      if (getTranslation(targetLocation, "name")) {
+      if (getTranslation.value(targetLocation, "name")) {
         const popupContent = `
           <div style="text-align: center;">
-            <h4 style="margin: 0; font-weight: bold;">${getTranslation(
+            <h4 style="margin: 0; font-weight: bold;">${getTranslation.value(
               targetLocation,
               "name"
             )}</h4>
             ${
-              getTranslation(targetLocation, "address") !== "-"
-                ? `<p style="margin: 5px 0 0;">${getTranslation(
+              getTranslation.value(targetLocation, "address") !== "-"
+                ? `<p style="margin: 5px 0 0;">${getTranslation.value(
                     targetLocation,
                     "address"
                   )}</p>`
@@ -354,8 +369,12 @@ onMounted(async () => {
 
       // Add click event to pan and zoom to the marker
       targetMarker.on("click", function () {
-        map.setView(targetMarker.getLatLng(), 15); // Adjust zoom level (15) as needed
+        map.setView(targetMarker.getLatLng(), zoomLevel); // Adjust zoom level (15) as needed
       });
+      if (zoomLevel) {
+        map.setView([targetLocation.lat, targetLocation.lng], zoomLevel);
+        targetMarker.openPopup();
+      }
     }
   }
 
@@ -422,6 +441,7 @@ onMounted(async () => {
   height: 100%;
   min-height: 400px;
   width: 100%;
+  z-index: 1;
 }
 /* Hide some unwanted elements from leaflet routing machine */
 :deep(.leaflet-routing-container) {

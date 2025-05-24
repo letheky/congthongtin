@@ -190,7 +190,7 @@ const breadcrumbData = computed(() => [
     path: "/utilities",
   },
   {
-    text: getTranslation(currentCategory.value, "name"),
+    text: getTranslation.value(currentCategory.value, "name"),
     path: `/utilities/${currentCategory.value.id}`,
   },
 ]);

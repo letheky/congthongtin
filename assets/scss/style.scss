@@ -7,7 +7,7 @@
 .dash-btn {
   padding: 0.5rem 1rem;
   min-width: fit-content;
-  color: white;
+  color: white !important;
   border: 1px solid white;
   border-radius: 2px;
   font-size: 0.75rem;
@@ -18,7 +18,7 @@
   overflow: hidden;
 
   &:hover {
-    color: #324157;
+    color: #324157 !important;
     border: 1px solid #324157;
   }
 

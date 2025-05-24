@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center gap-2">
+  <div class="flex items-center gap-2 my-4">
     <h3 class="text-gray-500">{{ $t("article.share") }}</h3>
     <NuxtLink
       v-for="(icon, index) in iconList"

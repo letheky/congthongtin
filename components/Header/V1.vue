@@ -142,25 +142,7 @@
             <Icon name="user" class="w-5 h-5 text-gray-800" />
             <p class="text-md text-gray-800">Đăng nhập</p>
           </div>
-          <button
-            v-for="loc in locales"
-            :key="loc.code"
-            class="flex items-center gap-2 border-gray-200 first-of-type:border-t-2 first-of-type:pt-2 last-of-type:border-b-2 last-of-type:pb-2"
-            :class="{
-              'text-blue-800': currentLocale === loc.code,
-              'text-gray-400': currentLocale !== loc.code,
-            }"
-            @click.prevent.stop="setLocale(loc.code)"
-          >
-            <NuxtImg
-              :src="`/images/flags/${loc.code}.png`"
-              :alt="`${loc.code} flag`"
-              class="w-5 h-5"
-            />
-            <p class="text-md">
-              {{ loc.name }}
-            </p>
-          </button>
+          <LanguageSelectorV2 />
         </div>
         <section class="text-gray-800 px-4 py-2">
           <p class="my-4">
@@ -190,7 +172,7 @@ type MenuItem = {
   children?: MenuItem[];
 };
 
-const { t, tm, locale, locales, setLocale } = useI18n();
+const { t, tm } = useI18n();
 const homeMenu = tm("homeMenu");
 
 const isScrolled = ref(false);
@@ -199,7 +181,6 @@ const showSubMenuIndex = ref(-1);
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 80;
 };
-const currentLocale = computed(() => locale.value);
 
 const handleShowSubMenu = (index: number) => {
   if (showSubMenuIndex.value === index) {

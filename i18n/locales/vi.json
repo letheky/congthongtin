@@ -7,121 +7,121 @@
     {
       "id": 2,
       "label": "Điểm đến",
-      "href": "#",
+      "href": "/destination",
 
       "children": [{
           "id": 21,
           "label": "Văn hóa - lịch sử",
-          "href": "#"
+          "href": "/destination/culture-and-history"
         },
         {
           "id": 22,
           "label": "Địa điểm check-in",
-          "href": "#"
+          "href": "/destination/check-in-place"
         },
         {
           "id": 23,
           "label": "Tâm linh",
-          "href": "#"
+          "href": "/destination/spiritual"
         }
       ]
     },
     {
       "id": 3,
       "label": "Tin tức & sự kiện",
-      "href": "#",
+      "href": "/news-and-events",
       "children": [{
           "id": 31,
           "label": "Tin tức",
-          "href": "#"
+          "href": "/news-and-events/news"
         },
         {
           "id": 32,
           "label": "Sự kiện",
-          "href": "#"
+          "href": "/news-and-events/events"
         }
       ]
     },
     {
       "id": 4,
       "label": "Lễ hội",
-      "href": "#"
+      "href": "/festival"
     },
     {
       "id": 5,
       "label": "Ẩm thực",
-      "href": "#",
+      "href": "/cuisine",
 
       "children": [{
           "id": 51,
           "label": "Nhà hàng",
-          "href": "#"
+          "href": "/cuisine/restaurant"
         },
         {
           "id": 52,
           "label": "Quán cafe",
-          "href": "#"
+          "href": "/cuisine/cafe"
         },
         {
           "id": 53,
           "label": "Đặc sản",
-          "href": "#"
+          "href": "/cuisine/speciality"
         }
       ]
     },
     {
       "id": 6,
       "label": "Lưu trú",
-      "href": "#",
+      "href": "/stay",
 
       "children": [{
           "id": 61,
           "label": "Khách sạn",
-          "href": "#"
+          "href": "/stay/hotel"
         },
         {
           "id": 62,
           "label": "Homestay",
-          "href": "#"
+          "href": "/stay/homestay"
         },
         {
           "id": 63,
           "label": "Apartment",
-          "href": "#"
+          "href": "/stay/apartment"
         }
       ]
     },
     {
       "id": 7,
       "label": "Tour du lịch",
-      "href": "#",
+      "href": "/tour",
 
       "children": [{
           "id": 71,
           "label": "Tour du lịch",
-          "href": "#"
+          "href": "/tour"
         },
         {
           "id": 72,
           "label": "Đơn vị lữ hành",
-          "href": "#"
+          "href": "/tour/travel-agency"
         }
       ]
     },
     {
       "id": 8,
       "label": "Thư viện media",
-      "href": "#",
+      "href": "",
 
       "children": [{
           "id": 81,
           "label": "Thư viện ảnh",
-          "href": "#"
+          "href": "/media/image-library"
         },
         {
           "id": 82,
           "label": "Thư viện video",
-          "href": "#"
+          "href": "/media/video-library"
         }
       ]
     }
@@ -173,14 +173,29 @@
     "share": "Chia sẻ",
     "rate": "Đánh giá",
     "form": {
-      "rateTitle":"Viết đánh giá",
+      "rateTitle": "Viết đánh giá",
       "comment": "Bình luận",
       "comments": "Bình luận",
-      "writeComment": "Viết bình luận của bạn"
+      "writeComment": "Viết bình luận của bạn",
+      "success": {
+        "rate": "Đánh giá gửi thành công! Vui lòng chờ kiểm duyệt",
+        "comment": "Bình luận thành công! Vui lòng chờ kiểm duyệt"
+      },
+      "error": {
+        "rate": "Không gửi thành công đánh giá",
+        "comment": "Không gửi thành công bình luận",
+        "normal": "Đã có lỗi xảy ra"
+      }
     },
     "warn": "Bạn đã like tour này",
-    "service":"Dịch vụ",
-    "contact":"Liên hệ"
+    "service": "Dịch vụ",
+    "contact": "Liên hệ",
+    "map": "Bản đồ",
+    "related": "Điểm đến liên quan",
+    "restaurant": "Nhà hàng gần đây",
+    "hotel": "Điểm cư trú gần đây",
+    "article": "Bài viết nổi bật",
+    "news": "Tin mới nhất"
   },
 
   "breadcrumb": {
@@ -191,7 +206,26 @@
     "contact": "Liên hệ",
     "utilities": "Tiện ích",
     "tour360": "Tour 360",
-    "destination":"Điểm đến"
+    "destination": "Điểm đến",
+    "cultureAndHistory":"Văn hóa - lịch sử",
+    "checkInPlace":"Địa điểm check-in",
+    "spiritual":"Tâm linh",
+    "newsAndEvents":"Tin tức & sự kiện",
+    "news":"Tin tức ",
+    "events":"Sự kiện",
+    "festival":"Lễ hội",
+    "cuisine":"Ẩm thực",
+    "restaurant":"Nhà hàng",
+    "cafe":"Quán cafe",
+    "specialty": "Đặc sản",
+    "stay":"Lưu trú",
+    "hotel":"Khách sạn",
+    "homestay":"Homestay",
+    "tour":"Tour du lịch",
+    "travelAgency":"Đơn vị lữ hành",
+    "imageLibrary":"Thư viện ảnh",
+    "videoLibrary":"Thư viện video"
+
   },
   "form": {
     "title": "Tiêu đề",

@@ -12,7 +12,7 @@ export const GET_TODO_BLOCK = 'category/block/'
 
 //Article - Bài viết hiện đang sử dụng cho 3 loại Cẩm nang du lịch, lễ hội, giới thiệu
 export const GET_ARTICLE = 'article/article/';
-export const GET_ALL_ARTICLE_BY_CATEGORY = 'article/category/';// Hiện chưa có
+export const GET_ARTICLE_CATEGORY = 'article/category/';// Hiện chưa có
 
 //Album - Danh sách album ảnh, video
 export const GET_IMAGE_ALBUM_LIST = 'album/image-category/';
@@ -42,7 +42,7 @@ export const GET_POSITION = 'position/position/';// Có thể truyền thêm tha
 //Restaurant - Quán ăn hiện có 3 danh mục nhà hàng, quán cafe & đặc sản
 export const GET_RESTAURANT_SERVICE = 'restaurant/service/';
 export const GET_RESTAURANT_TYPE = 'restaurant/type/';
-export const GET_RESTAURANT  = 'restaurant/restauant/';// Có thể truyền thêm tham số category hoặc id
+export const GET_RESTAURANT  = 'restaurant/restaurant/';// Có thể truyền thêm tham số category hoặc id
 
 //Stay - Lưu trú hiện có 3 danh mục khách sạn, nhà nghỉ, căn hộ
 export const GET_STAY_SERVICE = 'stay/service/';

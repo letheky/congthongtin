@@ -8,122 +8,122 @@
     {
       "id": 2,
       "label": "Destination",
-      "href": "#",
+      "href": "/destination",
 
       "children": [{
           "id": 21,
           "label": "Culture & History",
-          "href": "#"
+          "href": "/destination/culture-and-history"
         },
         {
           "id": 22,
-          "label": "Check-in Point",
-          "href": "#"
+          "label": "Check-in Place",
+          "href": "/destination/check-in-place"
         },
         {
           "id": 23,
           "label": "Spiritual",
-          "href": "#"
+          "href": "/destination/spiritual"
         }
       ]
     },
     {
       "id": 3,
       "label": "News & Events",
-      "href": "#",
+      "href": "/news-and-events",
 
       "children": [{
           "id": 31,
           "label": "News",
-          "href": "#"
+          "href": "/news-and-events/news"
         },
         {
           "id": 32,
           "label": "Events",
-          "href": "#"
+          "href": "/news-and-events/events"
         }
       ]
     },
     {
       "id": 4,
       "label": "Festival",
-      "href": "#"
+      "href": "/festival"
     },
     {
       "id": 5,
-      "label": "Cusine",
-      "href": "#",
+      "label": "Cuisine",
+      "href": "/cuisine",
 
       "children": [{
           "id": 51,
           "label": "Restaurant",
-          "href": "#"
+          "href": "/cuisine/restaurant"
         },
         {
           "id": 52,
           "label": "Cafe",
-          "href": "#"
+          "href": "/cuisine/cafe"
         },
         {
           "id": 53,
           "label": "Specialty",
-          "href": "#"
+          "href": "/cuisine/speciality"
         }
       ]
     },
     {
       "id": 6,
       "label": "Accommodation",
-      "href": "#",
+      "href": "/stay",
 
       "children": [{
           "id": 61,
           "label": "Hotel",
-          "href": "#"
+          "href": "/stay/hotel"
         },
         {
           "id": 62,
           "label": "Homestay",
-          "href": "#"
+          "href": "/stay/homestay"
         },
         {
           "id": 63,
           "label": "Apartment",
-          "href": "#"
+          "href": "/stay/apartment"
         }
       ]
     },
     {
       "id": 7,
       "label": "Tour",
-      "href": "#",
+      "href": "/tour",
 
       "children": [{
           "id": 71,
           "label": "Tour",
-          "href": "#"
+          "href": "/tour"
         },
         {
           "id": 72,
-          "label": "Travel Agency",
-          "href": "#"
+          "label": "Travel agency",
+          "href": "/tour/travel-agency"
         }
       ]
     },
     {
       "id": 8,
       "label": "Media Library",
-      "href": "#",
+      "href": "/media",
 
       "children": [{
           "id": 81,
           "label": "Image Library",
-          "href": "#"
+          "href": "/media/image-library"
         },
         {
           "id": 82,
           "label": "Video Library",
-          "href": "#"
+          "href": "/media/video-library"
         }
       ]
     }
@@ -174,14 +174,29 @@
     "share": "Shares",
     "rate": "Rate",
     "form": {
-      "rateTitle":"Leave a review",
+      "rateTitle": "Leave a review",
       "comment": "Comment",
       "comments": "Comments",
-      "writeComment": "Write a comment"
+      "writeComment": "Write a comment",
+      "success": {
+        "rate": "Rate sent successfully! Please wait for approval",
+        "comment": "Comment sent successfully! Please wait for approval"
+      },
+      "error": {
+        "rate": "Failed to send rate",
+        "comment": "Failed to send comment",
+        "normal": "Something went wrong"
+      }
     },
     "warn": "You've already liked this tour",
-    "service":"Service",
-    "contact":"Contact"
+    "service": "Service",
+    "contact": "Contact",
+    "map": "Map",
+    "related": "Related places",
+    "restaurant": "Nearby Restaurant",
+    "hotel": "Nearby Stay",
+    "article": "Featured article",
+    "news": "Latest news"
   },
 
   "breadcrumb": {
@@ -192,7 +207,25 @@
     "contact": "Contact",
     "utilities": "Utilities",
     "tour360": "Tour 360",
-    "destination":"Destination"
+    "destination": "Destination",
+    "cultureAndHistory": "Culture & History",
+    "checkInPlace": "Check-in Place",
+    "spiritual": "Spiritual",
+    "newsAndEvents": "News & Events",
+    "news": "News",
+    "events": "Events",
+    "festival": "Festival",
+    "cuisine": "Cuisine",
+    "restaurant": "Restaurant",
+    "cafe": "Cafe",
+    "specialty": "Specialty",
+    "stay": "Stay",
+    "hotel": "Hotel",
+    "homestay": "Homestay",
+    "tour": "Tour du lịch",
+    "travelAgency": "Travel Agency",
+    "imageLibrary": "Image Library",
+    "videoLibrary": "Video Library"
   },
   "form": {
     "title": "Title",

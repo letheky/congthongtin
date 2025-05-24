@@ -18,7 +18,7 @@
         id="name"
         v-model="form.name"
         type="text"
-        class="bg-gray-200 border border-gray-300 outline-none !text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 !p-2.5"
+        class="bg-gray-200 border border-gray-300 outline-none !text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 p-2.5"
         :placeholder="`${$t('form.name')}`"
         required
       />
@@ -26,7 +26,7 @@
         id="email"
         v-model="form.email"
         type="email"
-        class="bg-gray-200 border border-gray-300 outline-none !text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 !p-2.5"
+        class="bg-gray-200 border border-gray-300 outline-none !text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 p-2.5"
         :placeholder="`${$t('form.email')}`"
         required
       />
@@ -34,7 +34,7 @@
         id="phone_number"
         v-model="form.phone_number"
         type="text"
-        class="bg-gray-200 border border-gray-300 outline-none !text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 !p-2.5"
+        class="bg-gray-200 border border-gray-300 outline-none !text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 p-2.5"
         :placeholder="`${$t('form.phone')}`"
         required
       />
@@ -42,14 +42,14 @@
         id="title"
         v-model="form.title"
         type="text"
-        class="bg-gray-200 border border-gray-300 outline-none !text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 !p-2.5"
+        class="bg-gray-200 border border-gray-300 outline-none !text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 p-2.5"
         :placeholder="`${$t('form.title')}`"
         required
       />
       <textarea
         id="content"
         v-model="form.content"
-        class="bg-gray-200 border border-gray-300 outline-none !text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 !p-2.5 col-span-2 h-48"
+        class="bg-gray-200 border border-gray-300 outline-none !text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 col-span-2 h-48"
         :placeholder="`${$t('form.content')}`"
       />
       <UIPrimaryBtn

@@ -196,19 +196,6 @@ const activeTab = ref("home");
 const handleChangeActiveTab = (tab) => {
   activeTab.value = tab;
 };
-
-// Watch the destructured `modelValue` prop
-watch(
-  () => modelValue,
-  (newValue) => {
-    if (import.meta.client) {
-      if (newValue) {
-        document.body.classList.add("no-scroll");
-      }
-    }
-  },
-  { immediate: true }
-); // `immediate: true` ensures it runs once on component mount
 </script>
 
 <style lang="scss" scoped>

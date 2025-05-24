@@ -5,12 +5,23 @@ export default defineEventHandler(async (event) => {
   const serverEndpoint = config.public.serverEndpoint;
   const query = getQuery(event);
 
-  // Build the query string for the external API
   let apiUrl = serverEndpoint + GET_POSITION;
 
-  // If there are query parameters, append them to the API call
+  // Manually build the query string
   if (Object.keys(query).length > 0) {
-    apiUrl += '?' + new URLSearchParams(query as Record<string, string>).toString();
+    const params = [];
+    for (const key in query) {
+      if (Object.prototype.hasOwnProperty.call(query, key)) {
+        const value = query[key];
+        // Special handling for 'category' to not encode commas
+        if (key === 'category') {
+          params.push(`${key}=${value}`);
+        } else {
+          params.push(`${key}=${encodeURIComponent(String(value))}`);
+        }
+      }
+    }
+    apiUrl += '?' + params.join('&');
   }
 
   try {

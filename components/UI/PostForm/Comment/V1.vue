@@ -1,42 +1,43 @@
 <template>
-  <!-- eslint-disable -->
-  <div class="w-ful">
-    <h3 class="text-slate-700 font-semibold text-3xl tracking-tighter !mb-4">
-      0 bình luận
-    </h3>
-    <h3 class="text-slate-700 font-semibold text-3xl tracking-tighter !mb-4">
-      Viết bình luận của bạn
-    </h3>
-    <form
-      method="post"
-      class="w-full grid gap-2 mb-6 md:grid-cols-2"
-      @submit.prevent="handleSubmit"
+  <div class="w-full">
+    <UForm
+      :validate="validate"
+      :state="form"
+      class="w-full grid gap-4 mb-6 md:grid-cols-2"
+      @submit="handleSubmit"
     >
-      <input
-        id="name"
-        v-model="form.name"
-        type="text"
-        class="bg-gray-200 border border-gray-300 outline-none !text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 !p-2.5"
-        :placeholder="`${$t('form.name')}`"
-        required
-      />
-      <input
-        id="email"
-        v-model="form.email"
-        type="email"
-        class="bg-gray-200 border border-gray-300 outline-none !text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 !p-2.5"
-        :placeholder="`${$t('form.email')}`"
-        required
-      />
-      <textarea
-        id="content"
-        v-model="form.content"
-        class="bg-gray-200 border border-gray-300 outline-none !text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 !p-2.5 col-span-2 h-48"
-        :placeholder="`${$t('form.content')}`"
-      />
+      <UFormField name="name" class="col-span-full md:col-span-1">
+        <UInput
+          v-model="form.name"
+          type="text"
+          class="w-full uinput"
+          :placeholder="`${$t('form.name')}`"
+          :disabled="isSubmitting"
+        />
+      </UFormField>
+
+      <UFormField name="email" class="col-span-full md:col-span-1">
+        <UInput
+          v-model="form.email"
+          type="email"
+          class="w-full uinput"
+          :placeholder="`${$t('form.email')}`"
+          :disabled="isSubmitting"
+        />
+      </UFormField>
+
+      <UFormField name="content" class="col-span-full">
+        <UTextarea
+          v-model="form.content"
+          :placeholder="`${$t('form.content')}`"
+          class="w-full h-48 uinput"
+          :disabled="isSubmitting"
+        />
+      </UFormField>
+
       <UIPrimaryBtn
         type="submit"
-        class="font-bold uppercase"
+        class="font-bold uppercase mt-6"
         :disabled="isSubmitting"
       >
         <p class="flex items-center gap-1" :class="{ sending: isSubmitting }">
@@ -51,53 +52,105 @@
           </span>
         </p>
       </UIPrimaryBtn>
-    </form>
+    </UForm>
   </div>
 </template>
 
 <script setup lang="ts">
+import type { FormError, FormSubmitEvent } from "@nuxt/ui";
+const { t } = useI18n();
+
 // Reactive form object
-const form = ref({
+const form = reactive({
   name: "",
   email: "",
   content: "",
 });
 
 const isSubmitting = ref(false);
+const { apiPath } = defineProps({
+  apiPath: { type: String, required: true },
+});
+
+const toast = useToast(); // Nuxt UI's toast notification
+
+// Form validation
+const validate = (state: typeof form): FormError[] => {
+  const errors: FormError[] = [];
+  if (!state.name) errors.push({ name: "name", message: "Name is required" });
+  if (!state.email) {
+    errors.push({ name: "email", message: "Email is required" });
+  } else if (!/\S+@\S+\.\S+/.test(state.email)) {
+    errors.push({ name: "email", message: "Email is invalid" });
+  }
+  if (!state.content)
+    errors.push({ name: "content", message: "Content is required" });
+  return errors;
+};
 
 // Handle form submission
-const handleSubmit = async () => {
+async function handleSubmit(event: FormSubmitEvent<typeof form>) {
+  console.log("submiting");
   isSubmitting.value = true;
   try {
     // Send data to the backend
-    const { success } = await $fetch("/api/form-submit", {
+    await $fetch(apiPath, {
       method: "POST",
-      body: form.value,
+      body: event.data,
     });
 
-    if (success) {
-      // Reset form and navigate or show a success message
-      form.value = {
-        name: "",
-        email: "",
-        content: "",
-      };
-      alert("Form submitted successfully!");
-    }
-  } catch (error) {
-    console.error("Submission error:", error);
-    alert("An error occurred while submitting the form.");
+    // Reset form and show success message
+
+    form.name = "";
+    form.email = "";
+    form.content = "";
+
+    toast.add({
+      description: t("article.form.success.comment"),
+      color: "success",
+    });
+  } catch {
+    toast.add({
+      description: t("article.form.error.normal"),
+      color: "error",
+    });
   } finally {
     isSubmitting.value = false;
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
-input:-webkit-autofill {
-  box-shadow: 0 0 0px 1000px #e5e7eb inset !important; /* Tailwind's bg-gray-200 */
-  -webkit-text-fill-color: #111827 !important; /* Tailwind's text-gray-900 */
-  caret-color: #111827;
+:deep(label) {
+  color: #324157 !important;
+  font-size: 20px;
+}
+:deep(.uinput) {
+  input,
+  textarea {
+    background-color: #e5e7eb;
+    border: none;
+    outline: none;
+    color: #111827;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    border-radius: 0.125rem;
+    padding: 0.625rem;
+    // Focus states
+    &:focus {
+      box-shadow: 0 0 0 3px #3b82f6; // focus:ring effect
+      border-color: #3b82f6; // focus:border-blue-500
+    }
+    &::-webkit-autofill {
+      box-shadow: 0 0 0px 1000px #e5e7eb inset !important; /* Tailwind's bg-gray-200 */
+      -webkit-text-fill-color: #111827 !important; /* Tailwind's text-gray-900 */
+      caret-color: #111827;
+    }
+  }
+
+  textarea {
+    min-height: 200px !important;
+  }
 }
 .sending .dot-wave .dot {
   animation: wave 1.2s infinite;
